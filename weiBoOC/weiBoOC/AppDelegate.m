@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "YBTabBarController.h"
 
 @interface AppDelegate ()
 
@@ -16,7 +17,19 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    
+    // 设置全局属性
+    [self setGlobalProperty];
+    
+    // 创建window
+    self.window = [[UIWindow alloc] initWithFrame:[UIScreen bounds]];
+    // 设置跟试图
+    self.window.rootViewController = [YBTabBarController new];
+    // 显示
+    [self.window makeKeyAndVisible];
+    // 设置背景颜色
+    self.window.backgroundColor = [UIColor whiteColor];
+    
     return YES;
 }
 
@@ -40,6 +53,14 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+#pragma mark - 设置全局属性
+- (void)setGlobalProperty {
+    // barButtonItem
+    UIBarButtonItem *barButtonItem = [UIBarButtonItem appearance];
+    NSDictionary *dic = @{NSForegroundColorAttributeName:[UIColor orangeColor]};
+    [barButtonItem setTitleTextAttributes:dic forState:UIControlStateNormal];
 }
 
 @end

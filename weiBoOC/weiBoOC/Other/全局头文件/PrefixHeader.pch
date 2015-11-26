@@ -1,0 +1,36 @@
+/*
+ 配置
+    build settings -> Prefix Header
+    协商全路径 -> $(SRCROOT)/工程名/pch文件名（需要后缀名）
+ */
+
+#ifndef _5_Xcode6______PrefixHeader_pch
+#define _5_Xcode6______PrefixHeader_pch
+#ifdef __OBJC__
+
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+#import "UIScreen+Category.h"
+#import "UIView+SetRect.h"
+#import "UIColor+Category.h"
+#import "Masonry.h"
+
+// 是否是3.5寸屏幕
+#define isPhone4 ([UIScreen mainScreen].bounds.size.height > 480)
+
+// 随机颜色
+#define YBRandamColor [UIColor colorWithRed:arc4random_uniform(256)/ 255.0f green:arc4random_uniform(256)/ 255.0f blue:arc4random_uniform(256)/ 255.0f alpha:1.0];
+// 颜色
+#define YBColor(r,g,b,a) [UIColor colorWithRed:(r)/255.0f green:(g)/255.0f blue:(b)/255.0f alpha:(a)]
+
+// 设置角转弧度
+#define huDu(r) ((r) * M_PI / (180))
+
+// 自定义输出，系统会自动判断是发布阶段护着是调试阶段
+#ifdef DEBUG //调式阶段
+#define YBLog(...) NSLog(__VA_ARGS__);
+#else // 发布阶段
+#define YBLog(...)
+#endif
+#endif
+#endif
