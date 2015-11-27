@@ -44,6 +44,19 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0478A8E01C08821200513858 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		0478A8E21C08821C00513858 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		0478A8E41C08822900513858 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		0478A8E61C08823C00513858 /* libicucore.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libicucore.tbd; path = usr/lib/libicucore.tbd; sourceTree = SDKROOT; };
+		0478A8E81C08824A00513858 /* libz.1.2.5.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.1.2.5.tbd; path = usr/lib/libz.1.2.5.tbd; sourceTree = SDKROOT; };
+		0478A8EA1C08825400513858 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		0478A8EC1C08825B00513858 /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		0478A8EE1C08826D00513858 /* libstdc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.tbd"; path = "usr/lib/libstdc++.tbd"; sourceTree = SDKROOT; };
+		0478A8F01C08827700513858 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		0478A8F21C08828300513858 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
+		0478A8F41C08828B00513858 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
+		0478A8F61C08829600513858 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		0478A8F81C0882CD00513858 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		04A4ABD21C05FD46004058CC /* weiBoOC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = weiBoOC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04A4ABD61C05FD46004058CC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		04A4ABD81C05FD46004058CC /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = ../AppDelegate.h; sourceTree = "<group>"; };
@@ -492,6 +505,19 @@
 		2FEF0877115682CF9048C96B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0478A8F81C0882CD00513858 /* MessageUI.framework */,
+				0478A8F61C08829600513858 /* libsqlite3.tbd */,
+				0478A8F41C08828B00513858 /* AdSupport.framework */,
+				0478A8F21C08828300513858 /* ImageIO.framework */,
+				0478A8F01C08827700513858 /* CoreText.framework */,
+				0478A8EE1C08826D00513858 /* libstdc++.tbd */,
+				0478A8EC1C08825B00513858 /* JavaScriptCore.framework */,
+				0478A8EA1C08825400513858 /* Security.framework */,
+				0478A8E81C08824A00513858 /* libz.1.2.5.tbd */,
+				0478A8E61C08823C00513858 /* libicucore.tbd */,
+				0478A8E41C08822900513858 /* CoreTelephony.framework */,
+				0478A8E21C08821C00513858 /* QuartzCore.framework */,
+				0478A8E01C08821200513858 /* SystemConfiguration.framework */,
 				7228C33389DAAF2D59802A7A /* libPods-weiBoOC.a */,
 			);
 			name = Frameworks;
@@ -598,6 +624,9 @@
 			knownRegions = (
 				en,
 				Base,
+				"en-US",
+				"zh-Hans-CN",
+				"zh-Hans",
 			);
 			mainGroup = 04A4ABC91C05FD46004058CC;
 			productRefGroup = 04A4ABD31C05FD46004058CC /* Products */;
@@ -823,11 +852,24 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/weiBoOC/Lib/ShareSDK/Connection",
+					"$(PROJECT_DIR)/weiBoOC/Lib/ShareSDK/Core",
+					"$(PROJECT_DIR)/weiBoOC/Lib/ShareSDK/Extend/QQConnectSDK",
+					"$(PROJECT_DIR)/weiBoOC/Lib/ShareSDK",
+					"$(PROJECT_DIR)/weiBoOC/Lib/ShareSDK/UI",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "weiBoOC/Other/全局头文件/PrefixHeader.pch";
 				INFOPLIST_FILE = weiBoOC/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/weiBoOC/Lib/ShareSDK/Extend/SinaWeiboSDK",
+					"$(PROJECT_DIR)/weiBoOC/Lib/ShareSDK/Extend/WeChatSDK",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = xx.weiBoOC;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -839,11 +881,24 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/weiBoOC/Lib/ShareSDK/Connection",
+					"$(PROJECT_DIR)/weiBoOC/Lib/ShareSDK/Core",
+					"$(PROJECT_DIR)/weiBoOC/Lib/ShareSDK/Extend/QQConnectSDK",
+					"$(PROJECT_DIR)/weiBoOC/Lib/ShareSDK",
+					"$(PROJECT_DIR)/weiBoOC/Lib/ShareSDK/UI",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "weiBoOC/Other/全局头文件/PrefixHeader.pch";
 				INFOPLIST_FILE = weiBoOC/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/weiBoOC/Lib/ShareSDK/Extend/SinaWeiboSDK",
+					"$(PROJECT_DIR)/weiBoOC/Lib/ShareSDK/Extend/WeChatSDK",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = xx.weiBoOC;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
