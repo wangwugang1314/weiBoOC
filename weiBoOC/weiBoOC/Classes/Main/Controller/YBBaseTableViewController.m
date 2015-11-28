@@ -8,11 +8,12 @@
 
 #import "YBBaseTableViewController.h"
 #import "YBVisitView.h"
+#import "YBLoginView.h"
 
 @interface YBBaseTableViewController () <YBVisitViewDelegate>
 
 /// 是否是访客模式
-@property(nonatomic, assign) BOOL isVisit;
+@property(nonatomic, assign) BOOL isLogin;
 
 @end
 
@@ -23,9 +24,7 @@
 #pragma mark - loadView
 - (void)loadView {
     
-    self.isVisit = YES;
-    
-    if (self.isVisit) {
+    if (!self.isLogin) {
         self.view = [YBVisitView new];
         // 设置数据
         [self setVisitAllData];
@@ -38,7 +37,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // 判断是不是访客模式
-    if (self.isVisit) {
+    if (!self.isLogin) {
         // 登录按钮
         self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"登录" style:UIBarButtonItemStylePlain target:self action:@selector(loginButClick)];
         // 注册按钮
@@ -78,8 +77,10 @@
 /// 登录按钮点击
 - (void)loginButClick{
     YBLog(@"登录按钮点击");
-    //构造分享内容
-
+    // 跳转到登录界面
+    YBLoginView *loginCiew = [YBLoginView new];
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:loginCiew];
+    [self presentViewController:nav animated:YES completion:nil];
 }
 
 /// 注册按钮点击
@@ -94,6 +95,18 @@
     }else{
         [self loginButClick];
     }
+}
+
+#pragma mark - 懒加载
+/// 是否登录
+- (BOOL)isLogin {
+    YBLog(@"base -- %d",[YBUserModel userModel].isLogin);
+    return [YBUserModel userModel].isLogin;
+}
+
+/// 对象销毁
+- (void)dealloc {
+    YBLog(@"%s 销毁",__func__);
 }
 
 @end

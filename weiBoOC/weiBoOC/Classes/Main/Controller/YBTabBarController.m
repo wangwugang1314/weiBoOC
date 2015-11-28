@@ -87,4 +87,9 @@
     return _dataArr;
 }
 
+/// 对象销毁
+- (void)dealloc {
+    YBLog(@"%s 销毁",__func__);
+}
+
 @end
