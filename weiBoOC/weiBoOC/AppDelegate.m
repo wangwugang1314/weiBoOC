@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "YBTabBarController.h"
+#import "YBWelcomeViewController.h"
 
 @interface AppDelegate ()
 
@@ -24,7 +25,8 @@
     // 创建window
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen bounds]];
     // 设置跟试图
-    self.window.rootViewController = [YBTabBarController new];
+//    self.window.rootViewController = [YBTabBarController new];
+    self.window.rootViewController = [YBWelcomeViewController new];
     // 显示
     [self.window makeKeyAndVisible];
     // 设置背景颜色
