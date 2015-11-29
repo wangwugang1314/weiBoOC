@@ -12,6 +12,7 @@
 		0455F3781C0A95770062FA12 /* YBNewFeatureCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0455F3771C0A95770062FA12 /* YBNewFeatureCollectionCell.m */; };
 		0455F37F1C0ABFB60062FA12 /* YBIsNewVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = 0455F37E1C0ABFB60062FA12 /* YBIsNewVersion.m */; };
 		0455F3881C0ADB0A0062FA12 /* YBWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0455F3871C0ADB0A0062FA12 /* YBWebView.m */; };
+		0455F38D1C0AF4800062FA12 /* YBHomeNavTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0455F38C1C0AF4800062FA12 /* YBHomeNavTitleView.m */; };
 		04A4ABD71C05FD46004058CC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A4ABD61C05FD46004058CC /* main.m */; };
 		04A4ABDA1C05FD46004058CC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A4ABD91C05FD46004058CC /* AppDelegate.m */; };
 		04A4ABE21C05FD46004058CC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04A4ABE11C05FD46004058CC /* Assets.xcassets */; };
@@ -62,6 +63,8 @@
 		0455F37E1C0ABFB60062FA12 /* YBIsNewVersion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YBIsNewVersion.m; path = ../Tool/YBIsNewVersion.m; sourceTree = "<group>"; };
 		0455F3861C0ADB0A0062FA12 /* YBWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YBWebView.h; sourceTree = "<group>"; };
 		0455F3871C0ADB0A0062FA12 /* YBWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YBWebView.m; sourceTree = "<group>"; };
+		0455F38B1C0AF4800062FA12 /* YBHomeNavTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YBHomeNavTitleView.h; sourceTree = "<group>"; };
+		0455F38C1C0AF4800062FA12 /* YBHomeNavTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YBHomeNavTitleView.m; sourceTree = "<group>"; };
 		0478A8E01C08821200513858 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		0478A8E21C08821C00513858 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		0478A8E41C08822900513858 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
@@ -357,6 +360,8 @@
 		04D248971C06B48F007AF5E0 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				0455F38B1C0AF4800062FA12 /* YBHomeNavTitleView.h */,
+				0455F38C1C0AF4800062FA12 /* YBHomeNavTitleView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -827,6 +832,7 @@
 				04DEBBA21C09C7A000EEADED /* YBLoginView.m in Sources */,
 				04D248D51C06DFD4007AF5E0 /* YBMessageController.m in Sources */,
 				0449DA2F1C089B0900D1730C /* YBNetworking.m in Sources */,
+				0455F38D1C0AF4800062FA12 /* YBHomeNavTitleView.m in Sources */,
 				04D8DA121C09FC0F0066452E /* YBWelcomeViewController.m in Sources */,
 				04D8DA151C09FC6D0066452E /* YBNewFeatureViewController.m in Sources */,
 				04D248BA1C06C1C4007AF5E0 /* UIScreen+Category.m in Sources */,
