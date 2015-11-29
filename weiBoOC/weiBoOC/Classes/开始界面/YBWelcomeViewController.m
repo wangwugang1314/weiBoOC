@@ -22,12 +22,22 @@
 @implementation YBWelcomeViewController
 
 #pragma mark - viewDidLoad
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    // 准备UI
-    [self prepareUI];
-    // 动画
-    [self iconAnimation];
+//- (void)viewDidLoad {
+//    [super viewDidLoad];
+//    // 准备UI
+//    [self prepareUI];
+//    // 动画
+//    [self iconAnimation];
+//}
+
+- (instancetype)init{
+    if (self = [super init]) {
+        // 准备UI
+        [self prepareUI];
+        // 动画
+        [self iconAnimation];
+    }
+    return self;
 }
 
 #pragma mark - 准备UI
