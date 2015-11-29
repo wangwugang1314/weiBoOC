@@ -10,6 +10,8 @@
 #import "YBTabBarController.h"
 #import "YBWelcomeViewController.h"
 #import "YBNewFeatureViewController.h"
+#import "YBIsNewVersion.h"
+#import "YBUserModel.h"
 
 @interface AppDelegate ()
 
@@ -25,10 +27,8 @@
     
     // 创建window
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen bounds]];
-    // 设置跟试图
-//    self.window.rootViewController = [YBTabBarController new];
-//    self.window.rootViewController = [YBWelcomeViewController new];
-    self.window.rootViewController = [YBNewFeatureViewController new];
+    // 开始界面跳转
+    [self startViewChange];
     // 显示
     [self.window makeKeyAndVisible];
     // 设置背景颜色
@@ -59,12 +59,31 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
+#pragma mark - 开始界面转换
+- (void)startViewChange{
+    // 判断是否登录
+    if([YBUserModel userModel].isLogin) { // 已经登录
+        // 判断是否是新版本
+        if ([YBIsNewVersion isNewVersion]) {// 是新版本
+            // 显示版本新特性
+            self.window.rootViewController = [YBNewFeatureViewController new];
+        }else{ // 不是新版本
+            // 欢迎界面
+            self.window.rootViewController = [YBWelcomeViewController new];
+        }
+    }else{ // 没有登录
+        // 进入主控制器进行登录
+        self.window.rootViewController = [YBTabBarController new];
+    }
+}
+
 #pragma mark - 设置全局属性
 - (void)setGlobalProperty {
     // barButtonItem
     UIBarButtonItem *barButtonItem = [UIBarButtonItem appearance];
     NSDictionary *dic = @{NSForegroundColorAttributeName:[UIColor orangeColor]};
     [barButtonItem setTitleTextAttributes:dic forState:UIControlStateNormal];
+    barButtonItem.tintColor = [UIColor orangeColor];
 }
 
 @end

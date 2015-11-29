@@ -11,7 +11,7 @@
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
 #import "UIScreen+Category.h"
-#import "UIView+SetRect.h"
+#import "UIView+Extension.h"
 #import "UIColor+Category.h"
 #import "Masonry.h"
 #import "YBSingleton.h"

@@ -7,6 +7,7 @@
 //
 
 #import "YBWelcomeViewController.h"
+#import "YBTabBarController.h"
 
 @interface YBWelcomeViewController ()
 
@@ -68,7 +69,7 @@
     [self.iconView mas_updateConstraints:^(MASConstraintMaker *make) {
         make.bottom.mas_equalTo(self.view.mas_bottom).offset(-[UIScreen height] * 0.8);
     }];
-    [UIView animateWithDuration:2.2 delay:1 usingSpringWithDamping:0.6 initialSpringVelocity:4 options:0 animations:^{
+    [UIView animateWithDuration:2.2 delay:0.1 usingSpringWithDamping:0.6 initialSpringVelocity:4 options:0 animations:^{
         // 更新约束
         [self.view layoutIfNeeded];
     } completion:^(BOOL finished) {
@@ -76,7 +77,8 @@
         [UIView animateWithDuration:1 animations:^{
             self.userName.alpha = 1;
         } completion:^(BOOL finished) {
-            // 完成跳转控制器
+            // 完成跳转控制器(进入主控制器tabBar)
+            [UIApplication sharedApplication].keyWindow.rootViewController = [YBTabBarController new];
         }];
     }];
 }
@@ -86,6 +88,7 @@
 - (UIImageView *)bgView{
     if (_bgView == nil) {
         UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"ad_background"]];
+//        UIImageView *imageView = [[UIImageView alloc] initWithImage:[[UIImage alloc] initWithContentsOfFile:<#(nonnull NSString *)#>]];
         [self.view addSubview:imageView];
         _bgView = imageView;
     }
@@ -98,8 +101,7 @@
         UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"avatar_default_big"]];
         [self.view addSubview:imageView];
         // 设置圆角
-        imageView.layer.masksToBounds = YES;
-        imageView.layer.cornerRadius = 42.5;
+        imageView.cornerRadius = 42.5;
         _iconView = imageView;
     }
     return _iconView;
@@ -118,6 +120,10 @@
         [lable sizeToFit];
     }
     return _userName;
+}
+
+- (void)dealloc{
+    YBLog(@"欢迎界面销毁")
 }
 
 @end

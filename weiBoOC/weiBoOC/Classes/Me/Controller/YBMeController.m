@@ -22,6 +22,8 @@
 - (void)prepareUI {
     // 设置右边退出账号
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"退出账号" style:UIBarButtonItemStylePlain target:self action:@selector(rightBarButtonItemClick)];
+    
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"清除缓存" style:UIBarButtonItemStylePlain target:self action:@selector(leftBarButtonItemClick)];
 }
 
 #pragma mark - 按钮点击事件
@@ -30,6 +32,16 @@
     // 退出登录
     [YBUserModel exitLogin];
     [UIApplication sharedApplication].keyWindow.rootViewController = [YBTabBarController new];
+}
+
+- (void)leftBarButtonItemClick{
+    NSHTTPCookie *cookie;
+    NSHTTPCookieStorage *storage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
+    for (cookie in [storage cookies]) {
+        [storage deleteCookie:cookie];
+    }
+    
+    [[NSURLCache sharedURLCache] removeAllCachedResponses];
 }
 
 @end

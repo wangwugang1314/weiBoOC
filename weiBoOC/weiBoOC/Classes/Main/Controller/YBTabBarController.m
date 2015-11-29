@@ -89,7 +89,7 @@
 
 /// 对象销毁
 - (void)dealloc {
-    YBLog(@"%s 销毁",__func__);
+    YBLog(@"主界面销毁");
 }
 
 @end

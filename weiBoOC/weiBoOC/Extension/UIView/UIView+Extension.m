@@ -6,38 +6,38 @@
 //  Copyright (c) 2014年 YouXianMing. All rights reserved.
 //
 
-#import "UIView+SetRect.h"
+#import "UIView+Extension.h"
 
 @implementation UIView (SetRect)
 
-#pragma mark Frame
-
-- (CGPoint)viewOrigin
+#pragma mark - 原点
+- (CGPoint)orange
 {
     return self.frame.origin;
 }
 
-- (void)setViewOrigin:(CGPoint)newOrigin
+- (void)setOrange:(CGPoint)orange
 {
     CGRect newFrame = self.frame;
-    newFrame.origin = newOrigin;
+    newFrame.origin = orange;
     self.frame = newFrame;
 }
 
-- (CGSize)viewSize
+#pragma mark - size
+- (CGSize)size
 {
     return self.frame.size;
 }
 
-- (void)setViewSize:(CGSize)newSize
+- (void)setSize:(CGSize)size
 {
     CGRect newFrame = self.frame;
-    newFrame.size = newSize;
+    newFrame.size = size;
     self.frame = newFrame;
 }
 
 
-#pragma mark Frame Origin
+#pragma mark - x/y
 
 - (CGFloat)x
 {
@@ -136,19 +136,6 @@
 
 #pragma mark Center Point
 
-#if !IS_IOS_DEVICE
-- (CGPoint)center
-{
-    return CGPointMake(self.left + self.middleX, self.top + self.middleY);
-}
-
-- (void)setCenter:(CGPoint)newCenter
-{
-    self.left = newCenter.x - self.middleX;
-    self.top = newCenter.y - self.middleY;
-}
-#endif
-
 - (CGFloat)centerX
 {
     return self.center.x;
@@ -169,22 +156,10 @@
     self.center = CGPointMake(self.center.x, newCenterY);
 }
 
-
-#pragma mark Middle Point
-
-- (CGPoint)middlePoint
-{
-    return CGPointMake(self.middleX, self.middleY);
-}
-
-- (CGFloat)middleX
-{
-    return self.width / 2;
-}
-
-- (CGFloat)middleY
-{
-    return self.height / 2;
+/// 圆角半径
+- (void)setCornerRadius:(CGFloat)cornerRadius {
+    self.layer.masksToBounds = YES;
+    self.layer.cornerRadius = cornerRadius;
 }
 
 @end

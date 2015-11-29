@@ -25,10 +25,10 @@ YBSingleton_m(userModel)
             YBUserModel *userModel = [YBUserModel shareduserModel];
             // KVC
             [userModel setValuesForKeysWithDictionary:success];
-            // 保存数据
-            [userModel saveData];
             // 设置登录
             userModel.isLogin = YES;
+            // 保存数据
+            [userModel saveData];
         }else{
             // 数据加载失败
             isSuccess(NO);

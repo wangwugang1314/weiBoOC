@@ -76,7 +76,6 @@
 #pragma mark - 按钮点击
 /// 登录按钮点击
 - (void)loginButClick{
-    YBLog(@"登录按钮点击");
     // 跳转到登录界面
     YBLoginView *loginCiew = [YBLoginView new];
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:loginCiew];
@@ -100,13 +99,12 @@
 #pragma mark - 懒加载
 /// 是否登录
 - (BOOL)isLogin {
-    YBLog(@"base -- %d",[YBUserModel userModel].isLogin);
     return [YBUserModel userModel].isLogin;
 }
 
 /// 对象销毁
-- (void)dealloc {
-    YBLog(@"%s 销毁",__func__);
-}
+//- (void)dealloc {
+//    YBLog(@"%s 销毁",__func__);
+//}
 
 @end

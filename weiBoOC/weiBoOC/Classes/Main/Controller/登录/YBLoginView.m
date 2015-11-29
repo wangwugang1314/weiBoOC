@@ -9,11 +9,13 @@
 #import "YBLoginView.h"
 #import "YBNetworking.h"
 #import "YBUserModel.h"
+#import "YBWelcomeViewController.h"
+#import "YBWebView.h"
 
 @interface YBLoginView () <UIWebViewDelegate>
 
 /// 网页
-@property(nonatomic, weak) UIWebView *webView;
+@property(nonatomic, weak) YBWebView *webView;
 
 @end
 
@@ -22,7 +24,7 @@
 #pragma mark - 初始化
 - (void)loadView {
     // 设置网页
-    UIWebView *webView = [UIWebView new];
+    YBWebView *webView = [YBWebView new];
     self.view = webView;
     self.webView = webView;
     self.webView.delegate = self;
@@ -43,6 +45,7 @@
     // 设置网页
     YBNetworking *networking = [YBNetworking new];
     NSString *path = [NSString stringWithFormat:@"https://api.weibo.com/oauth2/authorize?client_id=%@&redirect_uri=%@",networking.client_id,networking.redirect_uri];
+
     // 加载网页
     [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:path]]];
     // 设置提示
@@ -75,6 +78,10 @@
         [YBUserModel loadUserData:code isLoadSuccess:^(BOOL isSuccess) {
             if (isSuccess) {// 登录成功
                 [SVProgressHUD showSuccessWithStatus:@"登录成功"];
+                // 退出界面
+                [self dismissViewControllerAnimated:YES completion:^{
+                    [UIApplication sharedApplication].keyWindow.rootViewController = [YBWelcomeViewController new];
+                }];
             }else{// 登录失败
                 [SVProgressHUD showErrorWithStatus:@"登录失败"];
             }
@@ -91,6 +98,13 @@
 }
 
 #pragma mark - 懒加载
+
+
+/// 对象销毁
+- (void)dealloc{
+    YBLog(@"登录界面销毁")
+    self.view = nil;
+}
 
 
 @end

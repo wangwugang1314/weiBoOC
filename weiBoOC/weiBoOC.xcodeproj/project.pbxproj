@@ -10,12 +10,14 @@
 		0449DA2C1C089AF100D1730C /* YBUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0449DA2B1C089AF100D1730C /* YBUserModel.m */; };
 		0449DA2F1C089B0900D1730C /* YBNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 0449DA2E1C089B0900D1730C /* YBNetworking.m */; };
 		0455F3781C0A95770062FA12 /* YBNewFeatureCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0455F3771C0A95770062FA12 /* YBNewFeatureCollectionCell.m */; };
+		0455F37F1C0ABFB60062FA12 /* YBIsNewVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = 0455F37E1C0ABFB60062FA12 /* YBIsNewVersion.m */; };
+		0455F3881C0ADB0A0062FA12 /* YBWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0455F3871C0ADB0A0062FA12 /* YBWebView.m */; };
 		04A4ABD71C05FD46004058CC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A4ABD61C05FD46004058CC /* main.m */; };
 		04A4ABDA1C05FD46004058CC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A4ABD91C05FD46004058CC /* AppDelegate.m */; };
 		04A4ABE21C05FD46004058CC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04A4ABE11C05FD46004058CC /* Assets.xcassets */; };
 		04A4ABF01C05FD46004058CC /* weiBoOCTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A4ABEF1C05FD46004058CC /* weiBoOCTests.m */; };
 		04A4ABFB1C05FD46004058CC /* weiBoOCUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A4ABFA1C05FD46004058CC /* weiBoOCUITests.m */; };
-		04D248AF1C06C0BB007AF5E0 /* UIView+SetRect.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D248AE1C06C0BB007AF5E0 /* UIView+SetRect.m */; };
+		04D248AF1C06C0BB007AF5E0 /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D248AE1C06C0BB007AF5E0 /* UIView+Extension.m */; };
 		04D248B31C06C0C2007AF5E0 /* UIColor+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D248B21C06C0C2007AF5E0 /* UIColor+Category.m */; };
 		04D248BA1C06C1C4007AF5E0 /* UIScreen+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D248B91C06C1C4007AF5E0 /* UIScreen+Category.m */; };
 		04D248C81C06DEBB007AF5E0 /* YBTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D248C71C06DEBB007AF5E0 /* YBTabBarController.m */; };
@@ -56,6 +58,10 @@
 		0449DA2E1C089B0900D1730C /* YBNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YBNetworking.m; sourceTree = "<group>"; };
 		0455F3761C0A95770062FA12 /* YBNewFeatureCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YBNewFeatureCollectionCell.h; sourceTree = "<group>"; };
 		0455F3771C0A95770062FA12 /* YBNewFeatureCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YBNewFeatureCollectionCell.m; sourceTree = "<group>"; };
+		0455F37D1C0ABFB60062FA12 /* YBIsNewVersion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YBIsNewVersion.h; path = ../Tool/YBIsNewVersion.h; sourceTree = "<group>"; };
+		0455F37E1C0ABFB60062FA12 /* YBIsNewVersion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YBIsNewVersion.m; path = ../Tool/YBIsNewVersion.m; sourceTree = "<group>"; };
+		0455F3861C0ADB0A0062FA12 /* YBWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YBWebView.h; sourceTree = "<group>"; };
+		0455F3871C0ADB0A0062FA12 /* YBWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YBWebView.m; sourceTree = "<group>"; };
 		0478A8E01C08821200513858 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		0478A8E21C08821C00513858 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		0478A8E41C08822900513858 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
@@ -81,8 +87,8 @@
 		04A4ABF61C05FD46004058CC /* weiBoOCUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = weiBoOCUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		04A4ABFA1C05FD46004058CC /* weiBoOCUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = weiBoOCUITests.m; sourceTree = "<group>"; };
 		04A4ABFC1C05FD46004058CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		04D248AD1C06C0BB007AF5E0 /* UIView+SetRect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+SetRect.h"; sourceTree = "<group>"; };
-		04D248AE1C06C0BB007AF5E0 /* UIView+SetRect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+SetRect.m"; sourceTree = "<group>"; };
+		04D248AD1C06C0BB007AF5E0 /* UIView+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Extension.h"; sourceTree = "<group>"; };
+		04D248AE1C06C0BB007AF5E0 /* UIView+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extension.m"; sourceTree = "<group>"; };
 		04D248B11C06C0C2007AF5E0 /* UIColor+Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Category.h"; sourceTree = "<group>"; };
 		04D248B21C06C0C2007AF5E0 /* UIColor+Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Category.m"; sourceTree = "<group>"; };
 		04D248B51C06C0D6007AF5E0 /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
@@ -173,6 +179,15 @@
 			name = "新特性界面";
 			sourceTree = "<group>";
 		};
+		0455F3801C0AC0440062FA12 /* 新版本 */ = {
+			isa = PBXGroup;
+			children = (
+				0455F37D1C0ABFB60062FA12 /* YBIsNewVersion.h */,
+				0455F37E1C0ABFB60062FA12 /* YBIsNewVersion.m */,
+			);
+			name = "新版本";
+			sourceTree = "<group>";
+		};
 		04A4ABC91C05FD46004058CC = {
 			isa = PBXGroup;
 			children = (
@@ -254,6 +269,7 @@
 		04A4AC541C0614CD004058CC /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				0455F3801C0AC0440062FA12 /* 新版本 */,
 				04DF42F51C08B62F008748B1 /* 单例 */,
 				04D248B41C06C0D6007AF5E0 /* 全局头文件 */,
 				04A4ABD81C05FD46004058CC /* AppDelegate.h */,
@@ -513,8 +529,8 @@
 		04D248AC1C06C0BB007AF5E0 /* UIView */ = {
 			isa = PBXGroup;
 			children = (
-				04D248AD1C06C0BB007AF5E0 /* UIView+SetRect.h */,
-				04D248AE1C06C0BB007AF5E0 /* UIView+SetRect.m */,
+				04D248AD1C06C0BB007AF5E0 /* UIView+Extension.h */,
+				04D248AE1C06C0BB007AF5E0 /* UIView+Extension.m */,
 			);
 			path = UIView;
 			sourceTree = "<group>";
@@ -570,6 +586,8 @@
 			children = (
 				04DEBBA01C09C7A000EEADED /* YBLoginView.h */,
 				04DEBBA11C09C7A000EEADED /* YBLoginView.m */,
+				0455F3861C0ADB0A0062FA12 /* YBWebView.h */,
+				0455F3871C0ADB0A0062FA12 /* YBWebView.m */,
 			);
 			path = "登录";
 			sourceTree = "<group>";
@@ -802,7 +820,8 @@
 				04A4ABDA1C05FD46004058CC /* AppDelegate.m in Sources */,
 				04D248CF1C06DF27007AF5E0 /* YBBaseNavigationController.m in Sources */,
 				04D248D81C06DFED007AF5E0 /* YBDiscoverController.m in Sources */,
-				04D248AF1C06C0BB007AF5E0 /* UIView+SetRect.m in Sources */,
+				0455F3881C0ADB0A0062FA12 /* YBWebView.m in Sources */,
+				04D248AF1C06C0BB007AF5E0 /* UIView+Extension.m in Sources */,
 				04A4ABD71C05FD46004058CC /* main.m in Sources */,
 				04D248DE1C06E932007AF5E0 /* YBVisitView.m in Sources */,
 				04DEBBA21C09C7A000EEADED /* YBLoginView.m in Sources */,
@@ -812,6 +831,7 @@
 				04D8DA151C09FC6D0066452E /* YBNewFeatureViewController.m in Sources */,
 				04D248BA1C06C1C4007AF5E0 /* UIScreen+Category.m in Sources */,
 				04D248D21C06DFB7007AF5E0 /* YBHomeController.m in Sources */,
+				0455F37F1C0ABFB60062FA12 /* YBIsNewVersion.m in Sources */,
 				04D248C81C06DEBB007AF5E0 /* YBTabBarController.m in Sources */,
 				04D248B31C06C0C2007AF5E0 /* UIColor+Category.m in Sources */,
 				04D248CC1C06DF0F007AF5E0 /* YBBaseTableViewController.m in Sources */,

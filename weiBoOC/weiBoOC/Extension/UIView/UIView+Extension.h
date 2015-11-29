@@ -11,14 +11,16 @@
 #define  Width   [UIScreen mainScreen].bounds.size.width
 #define  Height  [UIScreen mainScreen].bounds.size.height
 
-@interface UIView (SetRect)
+@interface UIView (Extension)
 
-// Frame
-@property (nonatomic) CGPoint viewOrigin;
-@property (nonatomic) CGSize  viewSize;
+/// 原点
+@property (nonatomic) CGPoint orange;
+/// size(大小)
+@property (nonatomic) CGSize  size;
 
-// Frame Origin
+/// x(orange)
 @property (nonatomic) CGFloat x;
+/// y(orange)
 @property (nonatomic) CGFloat y;
 
 // Frame Size
@@ -32,14 +34,10 @@
 @property (nonatomic) CGFloat right;
 
 // Center Point
-#if !IS_IOS_DEVICE
-@property (nonatomic) CGPoint center;
-#endif
 @property (nonatomic) CGFloat centerX;
 @property (nonatomic) CGFloat centerY;
 
-// Middle Point
-@property (nonatomic, readonly) CGPoint middlePoint;
-@property (nonatomic, readonly) CGFloat middleX;
-@property (nonatomic, readonly) CGFloat middleY;
+/// 设置圆角半径
+@property(nonatomic, assign, readwrite) CGFloat cornerRadius;
+
 @end

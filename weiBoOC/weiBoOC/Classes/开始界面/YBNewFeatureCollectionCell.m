@@ -7,6 +7,7 @@
 //
 
 #import "YBNewFeatureCollectionCell.h"
+#import "YBTabBarController.h"
 
 @interface YBNewFeatureCollectionCell ()
 
@@ -67,7 +68,7 @@
 
 #pragma mark - 按钮点击事件
 - (void)startButClick {
-    YBLog(@"开始按钮点击");
+    [UIApplication sharedApplication].keyWindow.rootViewController = [YBTabBarController new];
 }
 
 #pragma mark - 懒加载
