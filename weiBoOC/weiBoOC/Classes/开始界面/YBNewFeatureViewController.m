@@ -61,6 +61,11 @@
     }
 }
 
+/// 停止拖拽
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+    [self scrollViewDidEndDecelerating:self.collectionView];
+}
+
 #pragma mark - 懒加载
 /// 布局方式
 - (UICollectionViewFlowLayout *)flowLayout{
