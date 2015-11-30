@@ -20,9 +20,9 @@
 
 YBSingleton_m(userModel)
 
-#pragma mark - 网络加载数据
-/// 加载用户数据
-+ (void)loadUserData:(NSString *)code andFinish:(networkFinish)finish{
+#pragma mark - 加载用户数据
+/// 加载用户登录数据
++ (void)loadUserLoginData:(NSString *)code andFinish:(networkFinish)finish{
     // 链接
     NSString *path = @"/oauth2/access_token";
     // 参数
@@ -37,6 +37,21 @@ YBSingleton_m(userModel)
         finish(success, error);
     }];
 }
+
+/// 加载用户数据
++ (void)loadUserDataWithFinish:(networkFinish)finish {
+    // 链接
+    NSString *path = @"/2/users/show.json";
+    // 参数
+    YBUserModel *userModel = [YBUserModel userModel];
+    NSDictionary *dic = @{@"access_token":userModel.access_token,
+                          @"uid": userModel.uid};
+    // 加载数据
+    [[YBNetworking shareduserModel] GET:path parameters:dic andFinish:^(id success, NSError *error) {
+        finish(success, error);
+    }];
+}
+
 
 #pragma mark - 封装网络框架
 - (void)POST:(NSString *)URLString parameters:(nullable id)parameters andFinish:(networkFinish)finish {

@@ -16,10 +16,13 @@ typedef void (^loadUserDataFinish)(BOOL isSuccess);
 @property(nonatomic, copy) NSString *uid;
 /// 是否登录
 @property(nonatomic, assign) BOOL isLogin;
+/// 用户昵称
+@property(nonatomic, copy) NSString *screen_name;
+/// 头像地址
+@property(nonatomic, copy) NSString *avatar_large;
 
 /// 加载网络数据
-+ (void)loadUserData:(NSString *)code isLoadSuccess:(loadUserDataFinish)isSuccess;
-
++ (void)loadUserLoginData:(NSString *)code isLoadSuccess:(loadUserDataFinish)isSuccess;
 // 获取数据
 + (instancetype)userModel;
 /// 退出登录

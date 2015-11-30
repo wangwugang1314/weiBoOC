@@ -8,6 +8,7 @@
 
 #import "YBHomeController.h"
 #import "YBHomeNavTitleView.h"
+#import "YBNavScanCodeController.h"
 
 @interface YBHomeController ()
 
@@ -21,7 +22,8 @@
 #pragma mark - 
 - (void)viewDidLoad{
     [super viewDidLoad];
-    
+    // 如果没有登录就直接返回
+    if(![YBUserModel userModel].isLogin) return;
     // 准备UI
     [self prepareUI];
 }
@@ -37,7 +39,7 @@
     self.navigationItem.titleView = titleView;
     self.titleView = titleView;
     // 添加点击方法
-    [titleView addTarget:self action:@selector(titleViewClick) forControlEvents:UIControlEventTouchUpInside];
+    [titleView addTarget:self action:@selector(titleViewClick:) forControlEvents:UIControlEventTouchUpInside];
 }
 
 #pragma mark - 按钮点击事件
@@ -48,11 +50,12 @@
 
 /// 导航栏右边按钮点击
 - (void)rightBarButtonItemClick{
-    YBLog(@"导航栏右边按钮点击%s",__FUNCTION__);
+    [self presentViewController:[YBNavScanCodeController new] animated:YES completion:nil];
 }
 
 /// 导航栏中间按钮点击
-- (void)titleViewClick{
+- (void)titleViewClick:(UIButton *)but{
+    but.selected = !but.selected;
     YBLog(@"导航栏中间按钮点击%s",__FUNCTION__);
 }
 

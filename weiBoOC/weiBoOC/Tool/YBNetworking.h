@@ -21,7 +21,9 @@ YBSingleton_h(userModel)
 /// 回调地址
 @property(nonatomic, copy, readonly) NSString *redirect_uri;
 
+/// 加载用户登录数据
++ (void)loadUserLoginData:(NSString *)code andFinish:(networkFinish)finish;
 /// 加载用户数据
-+ (void)loadUserData:(NSString *)code andFinish:(networkFinish)finish;
++ (void)loadUserDataWithFinish:(networkFinish)finish;
 
 @end

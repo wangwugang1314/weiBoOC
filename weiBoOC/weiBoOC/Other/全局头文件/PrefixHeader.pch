@@ -17,6 +17,7 @@
 #import "YBSingleton.h"
 #import "YBUserModel.h"
 #import "SVProgressHUD.h"
+#import "UIImageView+WebCache.h"
 
 // 是否是3.5寸屏幕
 #define isPhone4 ([UIScreen mainScreen].bounds.size.height > 480)

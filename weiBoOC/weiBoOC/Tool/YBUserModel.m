@@ -14,10 +14,11 @@
 
 YBSingleton_m(userModel)
 
+#pragma mark - 加载数据
 /// 加载网络数据
-+ (void)loadUserData:(NSString *)code isLoadSuccess:(loadUserDataFinish)isSuccess {
++ (void)loadUserLoginData:(NSString *)code isLoadSuccess:(loadUserDataFinish)isSuccess {
     // 加载数据
-    [YBNetworking loadUserData:code andFinish:^(id success, NSError *error) {
+    [YBNetworking loadUserLoginData:code andFinish:^(id success, NSError *error) {
         // 判断是都加载成功
         if (success != nil && error == nil) {
             // 数据加载成功
@@ -27,11 +28,26 @@ YBSingleton_m(userModel)
             [userModel setValuesForKeysWithDictionary:success];
             // 设置登录
             userModel.isLogin = YES;
-            // 保存数据
-            [userModel saveData];
+            // 加载数据
+            [YBUserModel loadUserData];
         }else{
             // 数据加载失败
             isSuccess(NO);
+        }
+    }];
+}
+
+/// 加载数据
++ (void)loadUserData {
+    [YBNetworking loadUserDataWithFinish:^(id success, NSError *error) {
+        if (success != nil && error == nil) {
+            // 成功（转模型）
+            [[YBUserModel shareduserModel] setValuesForKeysWithDictionary:success];
+            // 保存数据
+            [[YBUserModel shareduserModel] saveData];
+        }else{
+            // 失败
+            [SVProgressHUD showErrorWithStatus:@"用户数据加载失败"];
         }
     }];
 }
@@ -57,7 +73,7 @@ YBSingleton_m(userModel)
     if([userModel.overtime compare:[NSDate date]] == NSOrderedDescending) {
         userModel.isLogin = NO;
     }
-    return [NSKeyedUnarchiver unarchiveObjectWithFile:[self path]];
+    return userModel;
 }
 
 /// 退出登录
@@ -73,6 +89,10 @@ YBSingleton_m(userModel)
     [aCoder encodeObject:self.uid forKey:@"uid"];
     [aCoder encodeObject:self.overtime forKey:@"overtime"];
     [aCoder encodeBool:self.isLogin forKey:@"isLogin"];
+    // 用户名称
+    [aCoder encodeObject:self.screen_name forKey:@"screen_name"];
+    // 用户头像
+    [aCoder encodeObject:self.avatar_large forKey:@"avatar_large"];
 }
 
 /// 解档
@@ -82,6 +102,10 @@ YBSingleton_m(userModel)
         self.uid = [aDecoder decodeObjectForKey:@"uid"];
         self.overtime = [aDecoder decodeObjectForKey:@"overtime"];
         self.isLogin = [aDecoder decodeBoolForKey:@"isLogin"];
+        // 用户名称
+        self.screen_name = [aDecoder decodeObjectForKey:@"screen_name"];
+        // 用户头像
+        self.avatar_large = [aDecoder decodeObjectForKey:@"avatar_large"];
     }
     return self;
 }

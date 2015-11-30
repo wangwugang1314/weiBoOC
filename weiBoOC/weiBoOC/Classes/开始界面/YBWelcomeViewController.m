@@ -8,6 +8,7 @@
 
 #import "YBWelcomeViewController.h"
 #import "YBTabBarController.h"
+#import "YBUserModel.h"
 
 @interface YBWelcomeViewController ()
 
@@ -69,12 +70,12 @@
     [self.iconView mas_updateConstraints:^(MASConstraintMaker *make) {
         make.bottom.mas_equalTo(self.view.mas_bottom).offset(-[UIScreen height] * 0.8);
     }];
-    [UIView animateWithDuration:2.2 delay:0.1 usingSpringWithDamping:0.6 initialSpringVelocity:4 options:0 animations:^{
+    [UIView animateWithDuration:0.2 delay:0.1 usingSpringWithDamping:0.6 initialSpringVelocity:4 options:0 animations:^{
         // 更新约束
         [self.view layoutIfNeeded];
     } completion:^(BOOL finished) {
         // 动画完成
-        [UIView animateWithDuration:1 animations:^{
+        [UIView animateWithDuration:0.1 animations:^{
             self.userName.alpha = 1;
         } completion:^(BOOL finished) {
             // 完成跳转控制器(进入主控制器tabBar)
@@ -88,7 +89,6 @@
 - (UIImageView *)bgView{
     if (_bgView == nil) {
         UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"ad_background"]];
-//        UIImageView *imageView = [[UIImageView alloc] initWithImage:[[UIImage alloc] initWithContentsOfFile:<#(nonnull NSString *)#>]];
         [self.view addSubview:imageView];
         _bgView = imageView;
     }
@@ -98,7 +98,8 @@
 /// 头像
 - (UIImageView *)iconView {
     if (_iconView == nil) {
-        UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"avatar_default_big"]];
+        UIImageView *imageView = [UIImageView new];
+        [imageView sd_setImageWithURL:[NSURL URLWithString:[YBUserModel userModel].avatar_large] placeholderImage:[UIImage imageNamed:@"avatar_default_big"]];
         [self.view addSubview:imageView];
         // 设置圆角
         imageView.cornerRadius = 42.5;
@@ -111,7 +112,7 @@
 - (UILabel *)userName{
     if (_userName == nil) {
         UILabel *lable = [UILabel new];
-        lable.text = @"焚膏继晷";
+        lable.text = [YBUserModel userModel].screen_name;
         lable.alpha = 0;
         lable.textColor = [UIColor orangeColor];
         lable.font = [UIFont systemFontOfSize:24];

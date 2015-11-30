@@ -75,7 +75,7 @@
         // 获取Code
         NSString *code = [request.URL.relativeString componentsSeparatedByString:@"="].lastObject;
         // 加载数据
-        [YBUserModel loadUserData:code isLoadSuccess:^(BOOL isSuccess) {
+        [YBUserModel loadUserLoginData:code isLoadSuccess:^(BOOL isSuccess) {
             if (isSuccess) {// 登录成功
                 [SVProgressHUD showSuccessWithStatus:@"登录成功"];
                 // 退出界面
