@@ -28,10 +28,8 @@
 @property (nonatomic) CGFloat height;
 
 // Frame Borders
-@property (nonatomic) CGFloat top;
-@property (nonatomic) CGFloat left;
-@property (nonatomic) CGFloat bottom;
-@property (nonatomic) CGFloat right;
+@property (nonatomic) CGFloat maxX;
+@property (nonatomic) CGFloat maxY;
 
 // Center Point
 @property (nonatomic) CGFloat centerX;

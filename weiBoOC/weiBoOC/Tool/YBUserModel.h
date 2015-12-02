@@ -6,7 +6,7 @@
 #import <Foundation/Foundation.h>
 
 // 数据加载是否成功
-typedef void (^loadUserDataFinish)(BOOL isSuccess);
+typedef void (^LoadUserDataFinish)(BOOL isSuccess);
 
 @interface YBUserModel : NSObject
 
@@ -22,7 +22,7 @@ typedef void (^loadUserDataFinish)(BOOL isSuccess);
 @property(nonatomic, copy) NSString *avatar_large;
 
 /// 加载网络数据
-+ (void)loadUserLoginData:(NSString *)code isLoadSuccess:(loadUserDataFinish)isSuccess;
++ (void)loadUserLoginData:(NSString *)code isLoadSuccess:(LoadUserDataFinish)isSuccess;
 // 获取数据
 + (instancetype)userModel;
 /// 退出登录

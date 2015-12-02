@@ -93,46 +93,23 @@
 
 #pragma mark Frame Borders
 
-- (CGFloat)left
-{
-    return self.x;
-}
-
-- (void)setLeft:(CGFloat)left
-{
-    self.x = left;
-}
-
-- (CGFloat)right
+- (CGFloat)maxX
 {
     return self.frame.origin.x + self.frame.size.width;
 }
 
-- (void)setRight:(CGFloat)right
+- (void)setMaxX:(CGFloat)maxX
 {
-    self.x = right - self.width;
+    self.x = maxX - self.width;
 }
 
-- (CGFloat)top
-{
-    return self.y;
-}
-
-- (void)setTop:(CGFloat)top
-{
-    self.y = top;
-}
-
-- (CGFloat)bottom
-{
+- (CGFloat)maxY{
     return self.frame.origin.y + self.frame.size.height;
 }
 
-- (void)setBottom:(CGFloat)bottom
-{
-    self.y = bottom - self.height;
+- (void)setMaxY:(CGFloat)maxY{
+    self.y = maxY - self.height;
 }
-
 
 #pragma mark Center Point
 

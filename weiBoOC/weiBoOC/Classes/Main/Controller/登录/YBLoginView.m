@@ -75,11 +75,12 @@
         // 获取Code
         NSString *code = [request.URL.relativeString componentsSeparatedByString:@"="].lastObject;
         // 加载数据
+        __weak typeof(self) selfVc = self;
         [YBUserModel loadUserLoginData:code isLoadSuccess:^(BOOL isSuccess) {
             if (isSuccess) {// 登录成功
                 [SVProgressHUD showSuccessWithStatus:@"登录成功"];
                 // 退出界面
-                [self dismissViewControllerAnimated:YES completion:^{
+                [selfVc dismissViewControllerAnimated:YES completion:^{
                     [UIApplication sharedApplication].keyWindow.rootViewController = [YBWelcomeViewController new];
                 }];
             }else{// 登录失败

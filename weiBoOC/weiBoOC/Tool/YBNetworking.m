@@ -20,6 +20,20 @@
 
 YBSingleton_m(userModel)
 
+#pragma mark - 加载微薄数据
+/// 加载微薄数据
++ (void)loadWeiBoDataWithFinish:(networkFinish)finish {
+    // 地址
+    NSString *path = @"/2/statuses/home_timeline.json";
+    // 参数
+    YBUserModel *userModel = [YBUserModel userModel];
+    NSDictionary *dic = @{@"access_token":userModel.access_token};
+    // 发送网络请求
+    [[YBNetworking shareduserModel] GET:path parameters:dic andFinish:^(id success, NSError *error) {
+        finish(success[@"statuses"], error);
+    }];
+}
+
 #pragma mark - 加载用户数据
 /// 加载用户登录数据
 + (void)loadUserLoginData:(NSString *)code andFinish:(networkFinish)finish{

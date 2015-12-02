@@ -25,5 +25,7 @@ YBSingleton_h(userModel)
 + (void)loadUserLoginData:(NSString *)code andFinish:(networkFinish)finish;
 /// 加载用户数据
 + (void)loadUserDataWithFinish:(networkFinish)finish;
+/// 加载微薄数据
++ (void)loadWeiBoDataWithFinish:(networkFinish)finish;
 
 @end

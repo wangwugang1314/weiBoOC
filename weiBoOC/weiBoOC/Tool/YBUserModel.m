@@ -16,7 +16,7 @@ YBSingleton_m(userModel)
 
 #pragma mark - 加载数据
 /// 加载网络数据
-+ (void)loadUserLoginData:(NSString *)code isLoadSuccess:(loadUserDataFinish)isSuccess {
++ (void)loadUserLoginData:(NSString *)code isLoadSuccess:(LoadUserDataFinish)isSuccess {
     // 加载数据
     [YBNetworking loadUserLoginData:code andFinish:^(id success, NSError *error) {
         // 判断是都加载成功
