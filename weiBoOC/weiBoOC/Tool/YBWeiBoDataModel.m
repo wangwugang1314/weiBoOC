@@ -8,6 +8,7 @@
 
 #import "YBWeiBoDataModel.h"
 #import "YBNetworking.h"
+#import "SDWebImageManager.h"
 
 @interface YBWeiBoDataModel ()
 
@@ -40,11 +41,50 @@
             for (NSDictionary *dic in success) {
                 [arrM addObject:[[YBWeiBoDataModel alloc] initWithDic:dic]];
             }
-            finish(arrM, NO);
+            // 加载数据完成（加载一张图片）
+            [self loadSignalImage:finish andDataArr:[arrM copy]];
         }else{ // 网络加载失败
             finish(nil, YES);
         }
     }];
+}
+
+/// 网络加载单张图片
++ (void)loadSignalImage:(LoadWeiBoDataFiniash)finish andDataArr:(NSArray *)dataArr {
+    // 创建GCD队列组
+    dispatch_group_t group = dispatch_group_create();
+    // 遍历数组
+    for (YBWeiBoDataModel *dataModel in dataArr) {
+        // 判断是不是转发微博
+        if (dataModel.retweeted_status) { // 转发微薄
+            [self loadImage:dataModel.retweeted_status GCDGroup:group];
+        } else { // 不是转发微薄
+            [self loadImage:dataModel GCDGroup:group];
+        }
+    }
+    // 当图片全部加载完成执行
+    dispatch_group_notify(group, dispatch_get_main_queue(), ^{
+        finish(dataArr, nil);
+    });
+}
+
+/// 加载图片
++ (void)loadImage:(YBWeiBoDataModel *)dataModel GCDGroup:(dispatch_group_t)group{
+    // 查看是不是一张图品
+    if (dataModel.pic_urls.count == 1) {
+        // 队列进组
+        dispatch_group_enter(group);
+        // 加载网络图片
+        [[SDWebImageManager sharedManager] downloadImageWithURL:[NSURL URLWithString:dataModel.pic_urls[0]] options:0 progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+        } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
+            // 判断图片加载是否成功
+            if(image != nil && error == nil) { // 加载成功
+                dataModel.imageSize = image.size;
+            }
+            // 队列出组
+            dispatch_group_leave(group);
+        }];
+    }
 }
 
 #pragma mark - setter
@@ -96,6 +136,21 @@
     self.weiBoSource = [self matchString:source];
 }
 
+/// 转发微薄
+- (void)setRetweeted_status:(id)retweeted_status {
+    _retweeted_status = [[YBWeiBoDataModel alloc] initWithDic:retweeted_status];
+}
+
+/// 图片资源
+- (void)setPic_urls:(NSArray *)pic_urls {
+    NSMutableArray *arrM = [NSMutableArray array];
+    for (NSDictionary *dic in pic_urls) {
+        [arrM addObject:dic[@"thumbnail_pic"]];
+    }
+    _pic_urls = [NSArray arrayWithArray:arrM];
+}
+
+#pragma mark - 内部方法
 // 基本匹配
 // 参数1：需要匹配的字符
 // 参数2：正则格式字符

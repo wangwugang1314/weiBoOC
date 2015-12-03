@@ -45,6 +45,10 @@
 		04D8DA121C09FC0F0066452E /* YBWelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D8DA111C09FC0F0066452E /* YBWelcomeViewController.m */; };
 		04D8DA151C09FC6D0066452E /* YBNewFeatureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D8DA141C09FC6D0066452E /* YBNewFeatureViewController.m */; };
 		04DEBBA21C09C7A000EEADED /* YBLoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04DEBBA11C09C7A000EEADED /* YBLoginView.m */; };
+		04F6F85E1C0EC9B4000A04D2 /* YBHomeCellCenterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F6F85D1C0EC9B4000A04D2 /* YBHomeCellCenterView.m */; };
+		04F6F8621C0EE119000A04D2 /* YBHomeImageCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F6F8611C0EE119000A04D2 /* YBHomeImageCollectionView.m */; };
+		04F6F8661C0F2090000A04D2 /* YBHomeCellBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F6F8651C0F2090000A04D2 /* YBHomeCellBottomView.m */; };
+		04F6F8691C0F3A87000A04D2 /* YBHomeCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F6F8681C0F3A87000A04D2 /* YBHomeCollectionViewCell.m */; };
 		71DDE2CAC86CB194EE6A3224 /* libPods-weiBoOC.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7228C33389DAAF2D59802A7A /* libPods-weiBoOC.a */; };
 /* End PBXBuildFile section */
 
@@ -176,6 +180,14 @@
 		04DEBBA01C09C7A000EEADED /* YBLoginView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YBLoginView.h; sourceTree = "<group>"; };
 		04DEBBA11C09C7A000EEADED /* YBLoginView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YBLoginView.m; sourceTree = "<group>"; };
 		04DF42F61C08B62F008748B1 /* YBSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YBSingleton.h; sourceTree = "<group>"; };
+		04F6F85C1C0EC9B4000A04D2 /* YBHomeCellCenterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YBHomeCellCenterView.h; sourceTree = "<group>"; };
+		04F6F85D1C0EC9B4000A04D2 /* YBHomeCellCenterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YBHomeCellCenterView.m; sourceTree = "<group>"; };
+		04F6F8601C0EE119000A04D2 /* YBHomeImageCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YBHomeImageCollectionView.h; sourceTree = "<group>"; };
+		04F6F8611C0EE119000A04D2 /* YBHomeImageCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YBHomeImageCollectionView.m; sourceTree = "<group>"; };
+		04F6F8641C0F2090000A04D2 /* YBHomeCellBottomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YBHomeCellBottomView.h; sourceTree = "<group>"; };
+		04F6F8651C0F2090000A04D2 /* YBHomeCellBottomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YBHomeCellBottomView.m; sourceTree = "<group>"; };
+		04F6F8671C0F3A87000A04D2 /* YBHomeCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YBHomeCollectionViewCell.h; sourceTree = "<group>"; };
+		04F6F8681C0F3A87000A04D2 /* YBHomeCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YBHomeCollectionViewCell.m; sourceTree = "<group>"; };
 		4BC1C7C0D486A44106590B37 /* Pods-weiBoOC.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-weiBoOC.debug.xcconfig"; path = "Pods/Target Support Files/Pods-weiBoOC/Pods-weiBoOC.debug.xcconfig"; sourceTree = "<group>"; };
 		7228C33389DAAF2D59802A7A /* libPods-weiBoOC.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-weiBoOC.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB6AF1BAD89AFA45D8D7952E /* Pods-weiBoOC.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-weiBoOC.release.xcconfig"; path = "Pods/Target Support Files/Pods-weiBoOC/Pods-weiBoOC.release.xcconfig"; sourceTree = "<group>"; };
@@ -521,6 +533,8 @@
 		04D248971C06B48F007AF5E0 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				04F6F8631C0F206E000A04D2 /* bottomView */,
+				04F6F85B1C0EC98E000A04D2 /* CenterView */,
 				04B4CBD41C0DB3A2008E9701 /* TopCellView */,
 				04B4CBD01C0DB37E008E9701 /* Cell */,
 				04B4CBCF1C0DB370008E9701 /* TitleView */,
@@ -765,6 +779,36 @@
 				04DF42F61C08B62F008748B1 /* YBSingleton.h */,
 			);
 			path = "单例";
+			sourceTree = "<group>";
+		};
+		04F6F85B1C0EC98E000A04D2 /* CenterView */ = {
+			isa = PBXGroup;
+			children = (
+				04F6F85F1C0ECE82000A04D2 /* CollectionView */,
+				04F6F85C1C0EC9B4000A04D2 /* YBHomeCellCenterView.h */,
+				04F6F85D1C0EC9B4000A04D2 /* YBHomeCellCenterView.m */,
+			);
+			name = CenterView;
+			sourceTree = "<group>";
+		};
+		04F6F85F1C0ECE82000A04D2 /* CollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				04F6F8601C0EE119000A04D2 /* YBHomeImageCollectionView.h */,
+				04F6F8611C0EE119000A04D2 /* YBHomeImageCollectionView.m */,
+				04F6F8671C0F3A87000A04D2 /* YBHomeCollectionViewCell.h */,
+				04F6F8681C0F3A87000A04D2 /* YBHomeCollectionViewCell.m */,
+			);
+			name = CollectionView;
+			sourceTree = "<group>";
+		};
+		04F6F8631C0F206E000A04D2 /* bottomView */ = {
+			isa = PBXGroup;
+			children = (
+				04F6F8641C0F2090000A04D2 /* YBHomeCellBottomView.h */,
+				04F6F8651C0F2090000A04D2 /* YBHomeCellBottomView.m */,
+			);
+			name = bottomView;
 			sourceTree = "<group>";
 		};
 		2FEF0877115682CF9048C96B /* Frameworks */ = {
@@ -1106,6 +1150,7 @@
 				04B4CBB21C0D2CA2008E9701 /* YBHomePresentAnimatedTransitioning.m in Sources */,
 				04D248AF1C06C0BB007AF5E0 /* UIView+Extension.m in Sources */,
 				04A4ABD71C05FD46004058CC /* main.m in Sources */,
+				04F6F85E1C0EC9B4000A04D2 /* YBHomeCellCenterView.m in Sources */,
 				04D248DE1C06E932007AF5E0 /* YBVisitView.m in Sources */,
 				04DEBBA21C09C7A000EEADED /* YBLoginView.m in Sources */,
 				04D248D51C06DFD4007AF5E0 /* YBMessageController.m in Sources */,
@@ -1113,12 +1158,14 @@
 				0455F38D1C0AF4800062FA12 /* YBHomeNavTitleView.m in Sources */,
 				04D8DA121C09FC0F0066452E /* YBWelcomeViewController.m in Sources */,
 				04D8DA151C09FC6D0066452E /* YBNewFeatureViewController.m in Sources */,
+				04F6F8661C0F2090000A04D2 /* YBHomeCellBottomView.m in Sources */,
 				04B4CBB51C0D2FC1008E9701 /* YBHomeDismissAnimatedTransitioning.m in Sources */,
 				04B4CBAC1C0D2732008E9701 /* YBHomePopViewController.m in Sources */,
 				04D248BA1C06C1C4007AF5E0 /* UIScreen+Category.m in Sources */,
 				04B4CBBB1C0D3314008E9701 /* YBHomePopView.m in Sources */,
 				04B4CBD71C0DB3C6008E9701 /* YBHomeCellTopView.m in Sources */,
 				04D248D21C06DFB7007AF5E0 /* YBHomeController.m in Sources */,
+				04F6F8691C0F3A87000A04D2 /* YBHomeCollectionViewCell.m in Sources */,
 				0455F37F1C0ABFB60062FA12 /* YBIsNewVersion.m in Sources */,
 				04D248C81C06DEBB007AF5E0 /* YBTabBarController.m in Sources */,
 				04B4CBD31C0DB397008E9701 /* YBHomeTableViewCell.m in Sources */,
@@ -1127,6 +1174,7 @@
 				04D248B31C06C0C2007AF5E0 /* UIColor+Category.m in Sources */,
 				04D248CC1C06DF0F007AF5E0 /* YBBaseTableViewController.m in Sources */,
 				0455F3DD1C0B50C80062FA12 /* YBNavScanCodeController.m in Sources */,
+				04F6F8621C0EE119000A04D2 /* YBHomeImageCollectionView.m in Sources */,
 				0455F3781C0A95770062FA12 /* YBNewFeatureCollectionCell.m in Sources */,
 				0449DA2C1C089AF100D1730C /* YBUserModel.m in Sources */,
 				04B4CBAF1C0D2A5D008E9701 /* YBHomePopPresentationController.m in Sources */,
@@ -1447,6 +1495,7 @@
 				043E39A61C0DE6ED0095ED9D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		043E39AC1C0DE6ED0095ED9D /* Build configuration list for PBXNativeTarget "TestTests" */ = {
 			isa = XCConfigurationList;
@@ -1455,6 +1504,7 @@
 				043E39A81C0DE6ED0095ED9D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		043E39AD1C0DE6ED0095ED9D /* Build configuration list for PBXNativeTarget "TestUITests" */ = {
 			isa = XCConfigurationList;
@@ -1463,6 +1513,7 @@
 				043E39AA1C0DE6ED0095ED9D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		04A4ABCD1C05FD46004058CC /* Build configuration list for PBXProject "weiBoOC" */ = {
 			isa = XCConfigurationList;

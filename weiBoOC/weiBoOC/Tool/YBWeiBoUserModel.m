@@ -36,21 +36,22 @@
     NSString *verifiedStr = @"";
     if (verified_type == 0) { // 认证用户
         verifiedStr = @"avatar_vip";
-    }else if (verified_type < 6) { // 企业认证
+    }else if (verified_type < 220) { // 企业认证
         verifiedStr = @"avatar_enterprise_vip";
     }else if (verified_type == 220) {// 达人
         verifiedStr = @"avatar_grassroot";
     }
-    self.verifiedImage = [UIImage imageNamed:verifiedStr];
+    if (verifiedStr != nil) {
+        self.verifiedImage = [UIImage imageNamed:verifiedStr];
+    }
 }
 
 /// vip
 - (void)setMbrank:(NSInteger)mbrank{
     // 如果为0 直接返回
-    if (!mbrank) {
-        return;
+    if (mbrank) {
+        self.vipImage = [UIImage imageNamed:[NSString stringWithFormat:@"common_icon_membership_level%zd",mbrank]];
     }
-    self.vipImage = [UIImage imageNamed:[NSString stringWithFormat:@"common_icon_membership_level%zd",mbrank]];
 }
 
 @end

@@ -27,7 +27,7 @@ YBSingleton_m(userModel)
     NSString *path = @"/2/statuses/home_timeline.json";
     // 参数
     YBUserModel *userModel = [YBUserModel userModel];
-    NSDictionary *dic = @{@"access_token":userModel.access_token};
+    NSDictionary *dic = @{@"access_token":userModel.access_token, @"count": @100};
     // 发送网络请求
     [[YBNetworking shareduserModel] GET:path parameters:dic andFinish:^(id success, NSError *error) {
         finish(success[@"statuses"], error);

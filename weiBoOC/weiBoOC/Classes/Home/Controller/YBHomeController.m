@@ -41,7 +41,7 @@
     // 注册通知
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(homeDismissAnimatedTransitioningNotification) name:YBHomeDismissAnimatedTransitioningNotification object:nil];
     
-    self.tableView.rowHeight = 100;
+    self.tableView.rowHeight = 800;
 }
 
 #pragma mark - 获取微薄数据
