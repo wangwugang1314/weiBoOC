@@ -51,48 +51,44 @@
     _dataModel = dataModel;
     // 转发微薄的文本
     YBWeiBoDataModel *switchWeiBo = dataModel.retweeted_status;
-    // 判断是不是转发微薄
-    if (dataModel.retweeted_status){ // 转发微薄
-        self.textView.text = switchWeiBo.text;
-        [self countCollectionViewWithCount:switchWeiBo andIsRetween:YES];
-    } else { // 原创微薄
-        self.textView.text = @"";
-        [self countCollectionViewWithCount:dataModel andIsRetween:NO];
-    }
     
     self.backgroundColor = switchWeiBo == nil ? [UIColor orangeColor] : [UIColor blueColor];
     
     if (switchWeiBo != nil) { // 转发微薄
+        // 发数据
+        self.collectionView.dataModel = switchWeiBo;
+        self.textView.text = switchWeiBo.text;
+        // 设置大小
+        [self countCollectionViewWithCount:switchWeiBo andIsRetween:YES];
         if (switchWeiBo.pic_urls.count) { // 有图片
             [self.collectionView mas_updateConstraints:^(MASConstraintMaker *make) {
                 make.top.mas_equalTo(self.textView.mas_bottom).offset(5);
             }];
-            // 发数据
-            self.collectionView.dataModel = switchWeiBo;
         }else{
             [self.collectionView mas_updateConstraints:^(MASConstraintMaker *make) {
                 make.top.mas_equalTo(self.textView.mas_bottom).offset(0);
             }];
         }
-        [self mas_updateConstraints:^(MASConstraintMaker *make) {
-            make.bottom.mas_equalTo(self.collectionView.mas_bottom).offset(5);
-        }];
     } else { // 原创微薄
+        // 发数据
+        self.collectionView.dataModel = dataModel;
+        self.textView.text = @"";
+        [self countCollectionViewWithCount:dataModel andIsRetween:NO];
         if (dataModel.pic_urls.count) { // 有图片
             [self.collectionView mas_updateConstraints:^(MASConstraintMaker *make) {
                 make.top.mas_equalTo(self.textView.mas_bottom).offset(0);
             }];
-            // 发数据
-            self.collectionView.dataModel = dataModel;
         } else { // 没有图片
             [self.collectionView mas_updateConstraints:^(MASConstraintMaker *make) {
                 make.top.mas_equalTo(self.textView.mas_bottom).offset(-5);
             }];
         }
-        [self mas_updateConstraints:^(MASConstraintMaker *make) {
-            make.bottom.mas_equalTo(self.collectionView.mas_bottom).offset(5);
-        }];
     }
+    // 视图底边与collection底边相聚5
+    [self mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.bottom.mas_equalTo(self.collectionView.mas_bottom).offset(5);
+    }];
+    [self layoutIfNeeded];
 }
 
 /// 计算collectionView
@@ -129,7 +125,6 @@
     [self.collectionView mas_updateConstraints:^(MASConstraintMaker *make) {
         make.size.mas_equalTo(CGSizeMake(wid, hei));
     }];
-    
 }
 
 #pragma mark - 懒加载

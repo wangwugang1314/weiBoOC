@@ -79,7 +79,11 @@
         } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
             // 判断图片加载是否成功
             if(image != nil && error == nil) { // 加载成功
-                dataModel.imageSize = image.size;
+                if (image.size.width < 40) { // 长图
+                    dataModel.imageSize = CGSizeMake(80, 90);
+                }else{
+                    dataModel.imageSize = image.size;
+                }
             }
             // 队列出组
             dispatch_group_leave(group);

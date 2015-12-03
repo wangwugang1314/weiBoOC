@@ -27,7 +27,7 @@
 
 @implementation YBHomeController
 
-#pragma mark - 
+#pragma mark - viewDidLoad
 - (void)viewDidLoad{
     [super viewDidLoad];
     // 如果没有登录就直接返回
@@ -41,7 +41,13 @@
     // 注册通知
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(homeDismissAnimatedTransitioningNotification) name:YBHomeDismissAnimatedTransitioningNotification object:nil];
     
-    self.tableView.rowHeight = 800;
+    self.tableView.estimatedRowHeight = 300;
+}
+
+#pragma mark - 内存警告
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    NSLog(@"888888");
 }
 
 #pragma mark - 获取微薄数据
@@ -128,6 +134,12 @@
 /// 转场动画代理
 - (nullable UIPresentationController *)presentationControllerForPresentedViewController:(UIViewController *)presented presentingViewController:(UIViewController *)presenting sourceViewController:(UIViewController *)source{
     return [[YBHomePopPresentationController alloc] initWithPresentedViewController:presented presentingViewController:presenting];
+}
+
+#pragma mark - 设置行高
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    YBWeiBoDataModel *dataModel = self.dataArr[indexPath.row];
+    return dataModel.rowHeight;
 }
 
 #pragma mark - 懒加载

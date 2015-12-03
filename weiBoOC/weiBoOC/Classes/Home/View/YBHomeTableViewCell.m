@@ -48,7 +48,7 @@
     [self.textView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(self.topView.mas_bottom).offset(5);
         make.left.mas_equalTo(self.contentView.mas_left).offset(10);
-        make.right.mas_equalTo(self.contentView.mas_right).offset(-10);
+        make.width.mas_equalTo([UIScreen width] - 20);
     }];
     // 中间试图
     [self.centerView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -73,8 +73,12 @@
     self.topView.dataModel = dataModel;
     // 微薄内容
     self.textView.text = dataModel.text;
+    [self.textView sizeToFit];
     // 中间试图
     self.centerView.dataModel = self.dataModel;
+    [self.contentView layoutIfNeeded];
+    [self.bottomView layoutIfNeeded];
+    dataModel.rowHeight = self.bottomView.maxY + 5;
 }
 
 #pragma mark - 懒加载

@@ -44,15 +44,13 @@
 /// 数据
 - (void)setDataModel:(YBWeiBoDataModel *)dataModel{
     _dataModel = dataModel;
-    self.contentSize = self.size;
-    [self sizeToFit];
+    
     if (dataModel.pic_urls.count == 1) {
         self.flowLayout.itemSize = dataModel.imageSize;
     }else{
         CGFloat itemWidth = ([UIScreen width] - 30) / 3;
         self.flowLayout.itemSize = CGSizeMake(itemWidth, itemWidth);
     }
-    [self.superview layoutIfNeeded];
     [self reloadData];
 }
 
@@ -63,7 +61,7 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     YBHomeCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"YBHomeCollectionViewCell" forIndexPath:indexPath];
-    
+    cell.imagePath = self.dataModel.pic_urls[indexPath.row];
     return cell;
 }
 

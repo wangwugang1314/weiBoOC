@@ -52,5 +52,10 @@
     return _bgView;
 }
 
+/// 对象销毁
+- (void)dealloc {
+    YBLog(@"popView销毁")
+}
+
 
 @end

@@ -10,4 +10,7 @@
 
 @interface YBHomeCollectionViewCell : UICollectionViewCell
 
+/// 图片地址
+@property(nonatomic, copy) NSString *imagePath;
+
 @end
