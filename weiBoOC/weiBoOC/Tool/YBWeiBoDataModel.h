@@ -30,8 +30,12 @@ typedef void (^LoadWeiBoDataFiniash)(NSArray *weiMoModels, BOOL isError);
 @property(nonatomic, strong) NSArray *pic_urls;
 /// 当为一张图片的时候图片的大小
 @property(nonatomic, assign) CGSize imageSize;
-///// 大图的url
-//var bigPictureUrls = [NSURL]()
+/// 大图的url
+@property(nonatomic, strong) NSArray *bigPictureUrls;
+/// 当前选择的行
+@property(nonatomic, assign) NSInteger index;
+/// 所有图片的frame
+@property(nonatomic, strong) NSArray *imageFrames;
 /// MARK: 行高
 @property(nonatomic, assign) CGFloat rowHeight;
 

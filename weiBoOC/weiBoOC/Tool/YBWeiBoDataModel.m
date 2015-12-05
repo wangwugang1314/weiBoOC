@@ -148,9 +148,14 @@
 /// 图片资源
 - (void)setPic_urls:(NSArray *)pic_urls {
     NSMutableArray *arrM = [NSMutableArray array];
+    NSMutableArray *bigImageURLs = [NSMutableArray array];
     for (NSDictionary *dic in pic_urls) {
-        [arrM addObject:dic[@"thumbnail_pic"]];
+        NSString *str = dic[@"thumbnail_pic"];
+        [arrM addObject:str];
+        // 设置大图
+        [bigImageURLs addObject:[NSURL URLWithString:[str stringByReplacingOccurrencesOfString:@"thumbnail" withString:@"large"]]];
     }
+    self.bigPictureUrls = [bigImageURLs copy];
     _pic_urls = [NSArray arrayWithArray:arrM];
 }
 

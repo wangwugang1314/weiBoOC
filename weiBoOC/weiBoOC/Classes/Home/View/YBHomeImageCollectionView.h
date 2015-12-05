@@ -9,6 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "YBWeiBoDataModel.h"
 
+/// 点击图片通知
+static NSString *YBHomeImageCollectionViewNotification = @"YBHomeImageCollectionViewNotification";
+
 @interface YBHomeImageCollectionView : UICollectionView
 
 /// 数据

@@ -15,6 +15,8 @@
 #import "YBHomeDismissAnimatedTransitioning.h"
 #import "YBWeiBoDataModel.h"
 #import "YBHomeTableViewCell.h"
+#import "YBHomeImageCollectionView.h"
+#import "YBHomePictureViewController.h"
 
 @interface YBHomeController () <UIViewControllerTransitioningDelegate>
 
@@ -40,6 +42,8 @@
     [self prepareUI];
     // 注册通知
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(homeDismissAnimatedTransitioningNotification) name:YBHomeDismissAnimatedTransitioningNotification object:nil];
+    /// 点击图片通知
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(homeImageCollectionViewNotification:) name:YBHomeImageCollectionViewNotification object:nil];
     
     self.tableView.estimatedRowHeight = 300;
 }
@@ -103,9 +107,18 @@
     [self presentViewController:popVC animated:YES completion:nil];
 }
 
+#pragma mark - 代理事件
 /// 通知代理
 - (void)homeDismissAnimatedTransitioningNotification {
     [self titleViewClick:self.titleView];
+}
+
+/// 点击图片
+- (void)homeImageCollectionViewNotification:(NSNotification *)notification {
+    // 展现控制器
+    YBHomePictureViewController *vc = [[YBHomePictureViewController alloc] initWithDataModel:notification.userInfo[@"dataModel"]];
+    vc.modalPresentationStyle = UIModalPresentationCustom;
+    [self presentViewController:vc animated:YES completion:nil];
 }
 
 #pragma mark - 数据源代理
@@ -118,6 +131,11 @@
     // 设置数据
     cell.dataModel = self.dataArr[indexPath.row];
     return cell;
+}
+
+/// 点击行不显示高亮
+- (BOOL)tableView:(UITableView *)tableView shouldHighlightRowAtIndexPath:(NSIndexPath *)indexPath {
+    return NO;
 }
 
 #pragma mark - 转场动画代理
