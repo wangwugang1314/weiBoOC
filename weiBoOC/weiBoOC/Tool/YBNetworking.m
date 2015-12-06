@@ -22,14 +22,19 @@ YBSingleton_m(userModel)
 
 #pragma mark - 加载微薄数据
 /// 加载微薄数据
-+ (void)loadWeiBoDataWithFinish:(networkFinish)finish {
++ (void)loadWeiBoDataWithNewId:(NSInteger)since_id Finish:(networkFinish)finish {
     // 地址
     NSString *path = @"/2/statuses/home_timeline.json";
     // 参数
     YBUserModel *userModel = [YBUserModel userModel];
-    NSDictionary *dic = @{@"access_token":userModel.access_token, @"count": @100};
+    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+    [dic setObject:userModel.access_token forKey:@"access_token"];
+    // 如果是加载新数据
+    if (since_id != 0) {
+        [dic setObject:@(since_id) forKey:@"since_id"];
+    }
     // 发送网络请求
-    [[YBNetworking shareduserModel] GET:path parameters:dic andFinish:^(id success, NSError *error) {
+    [[YBNetworking shareduserModel] GET:path parameters:[dic copy] andFinish:^(id success, NSError *error) {
         finish(success[@"statuses"], error);
     }];
 }

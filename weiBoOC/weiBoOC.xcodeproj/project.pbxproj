@@ -50,6 +50,7 @@
 		04D8DA121C09FC0F0066452E /* YBWelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D8DA111C09FC0F0066452E /* YBWelcomeViewController.m */; };
 		04D8DA151C09FC6D0066452E /* YBNewFeatureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D8DA141C09FC6D0066452E /* YBNewFeatureViewController.m */; };
 		04DEBBA21C09C7A000EEADED /* YBLoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04DEBBA11C09C7A000EEADED /* YBLoginView.m */; };
+		04EB99C91C13C6B7003A3A32 /* YBHomeRefreshControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 04EB99C81C13C6B7003A3A32 /* YBHomeRefreshControl.m */; };
 		04F6F85E1C0EC9B4000A04D2 /* YBHomeCellCenterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F6F85D1C0EC9B4000A04D2 /* YBHomeCellCenterView.m */; };
 		04F6F8621C0EE119000A04D2 /* YBHomeImageCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F6F8611C0EE119000A04D2 /* YBHomeImageCollectionView.m */; };
 		04F6F8661C0F2090000A04D2 /* YBHomeCellBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F6F8651C0F2090000A04D2 /* YBHomeCellBottomView.m */; };
@@ -195,6 +196,8 @@
 		04DEBBA01C09C7A000EEADED /* YBLoginView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YBLoginView.h; sourceTree = "<group>"; };
 		04DEBBA11C09C7A000EEADED /* YBLoginView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YBLoginView.m; sourceTree = "<group>"; };
 		04DF42F61C08B62F008748B1 /* YBSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YBSingleton.h; sourceTree = "<group>"; };
+		04EB99C71C13C6B7003A3A32 /* YBHomeRefreshControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YBHomeRefreshControl.h; sourceTree = "<group>"; };
+		04EB99C81C13C6B7003A3A32 /* YBHomeRefreshControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YBHomeRefreshControl.m; sourceTree = "<group>"; };
 		04F6F85C1C0EC9B4000A04D2 /* YBHomeCellCenterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YBHomeCellCenterView.h; sourceTree = "<group>"; };
 		04F6F85D1C0EC9B4000A04D2 /* YBHomeCellCenterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YBHomeCellCenterView.m; sourceTree = "<group>"; };
 		04F6F8601C0EE119000A04D2 /* YBHomeImageCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YBHomeImageCollectionView.h; sourceTree = "<group>"; };
@@ -325,7 +328,8 @@
 				0455F3DB1C0B50C80062FA12 /* YBScanCode.h */,
 				0455F3DC1C0B50C80062FA12 /* YBScanCode.m */,
 			);
-			path = "二维码";
+			name = "二维码";
+			path = "Controller/二维码";
 			sourceTree = "<group>";
 		};
 		0472C7971C12BD7F00CCCB51 /* 图片轮播器 */ = {
@@ -481,6 +485,7 @@
 				04B4CBBA1C0D3314008E9701 /* YBHomePopView.m */,
 			);
 			name = PopViewController;
+			path = Controller;
 			sourceTree = "<group>";
 		};
 		04B4CBCF1C0DB370008E9701 /* TitleView */ = {
@@ -561,6 +566,8 @@
 		04D248941C06B48F007AF5E0 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				04B4CBA91C0D26DA008E9701 /* PopViewController */,
+				0455F38F1C0B0D2B0062FA12 /* 二维码 */,
 				0472C7971C12BD7F00CCCB51 /* 图片轮播器 */,
 				04D248951C06B48F007AF5E0 /* Controller */,
 				04D248961C06B48F007AF5E0 /* Model */,
@@ -572,8 +579,6 @@
 		04D248951C06B48F007AF5E0 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				04B4CBA91C0D26DA008E9701 /* PopViewController */,
-				0455F38F1C0B0D2B0062FA12 /* 二维码 */,
 				04D248D01C06DFB7007AF5E0 /* YBHomeController.h */,
 				04D248D11C06DFB7007AF5E0 /* YBHomeController.m */,
 			);
@@ -590,6 +595,7 @@
 		04D248971C06B48F007AF5E0 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				04EB99C61C13C697003A3A32 /* 刷新控件 */,
 				04F6F8631C0F206E000A04D2 /* bottomView */,
 				04F6F85B1C0EC98E000A04D2 /* CenterView */,
 				04B4CBD41C0DB3A2008E9701 /* TopCellView */,
@@ -836,6 +842,15 @@
 				04DF42F61C08B62F008748B1 /* YBSingleton.h */,
 			);
 			path = "单例";
+			sourceTree = "<group>";
+		};
+		04EB99C61C13C697003A3A32 /* 刷新控件 */ = {
+			isa = PBXGroup;
+			children = (
+				04EB99C71C13C6B7003A3A32 /* YBHomeRefreshControl.h */,
+				04EB99C81C13C6B7003A3A32 /* YBHomeRefreshControl.m */,
+			);
+			name = "刷新控件";
 			sourceTree = "<group>";
 		};
 		04F6F85B1C0EC98E000A04D2 /* CenterView */ = {
@@ -1224,6 +1239,7 @@
 				04B4CBAC1C0D2732008E9701 /* YBHomePopViewController.m in Sources */,
 				04D248BA1C06C1C4007AF5E0 /* UIScreen+Category.m in Sources */,
 				04B4CBBB1C0D3314008E9701 /* YBHomePopView.m in Sources */,
+				04EB99C91C13C6B7003A3A32 /* YBHomeRefreshControl.m in Sources */,
 				04B4CBD71C0DB3C6008E9701 /* YBHomeCellTopView.m in Sources */,
 				04D248D21C06DFB7007AF5E0 /* YBHomeController.m in Sources */,
 				04F6F8691C0F3A87000A04D2 /* YBHomeCollectionViewCell.m in Sources */,

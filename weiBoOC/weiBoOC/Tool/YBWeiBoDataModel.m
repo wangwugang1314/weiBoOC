@@ -33,8 +33,8 @@
 
 #pragma mark - 加载网络数据
 /// 加载网络数据
-+ (void)loadWeiBoDataModel:(LoadWeiBoDataFiniash)finish {
-    [YBNetworking loadWeiBoDataWithFinish:^(id success, NSError *error) {
++ (void)loadWeiBoDataModelWithNewId:(NSInteger)since_id :(LoadWeiBoDataFiniash)finish {
+    [YBNetworking loadWeiBoDataWithNewId:since_id Finish:^(id success, NSError *error) {
         // 判断数据是否加载成功
         if (error == nil) { // 网络加载成功
             NSMutableArray *arrM = [NSMutableArray array];
@@ -42,9 +42,10 @@
                 [arrM addObject:[[YBWeiBoDataModel alloc] initWithDic:dic]];
             }
             // 加载数据完成（加载一张图片）
-            [self loadSignalImage:finish andDataArr:[arrM copy]];
+            [self loadSignalImage:finish andDataArr:arrM];
         }else{ // 网络加载失败
             finish(nil, YES);
+            YBLog(@"%@",error)
         }
     }];
 }

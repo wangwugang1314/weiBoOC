@@ -17,6 +17,14 @@
 #import "YBHomeTableViewCell.h"
 #import "YBHomeImageCollectionView.h"
 #import "YBHomePictureViewController.h"
+#import "YBHomeRefreshControl.h"
+
+/// 数据加载类型
+typedef NS_ENUM(NSInteger, YBHomeLoadWeiBoDataStyle) {
+    YBHomeLoadWeiBoDataStyleOne,    // 向下
+    YBHomeLoadWeiBoDataStyleNew,    // 向上
+    YBHomeLoadWeiBoDataStyleOld     // 动画
+};
 
 @interface YBHomeController () <UIViewControllerTransitioningDelegate>
 
@@ -24,6 +32,12 @@
 @property(nonatomic, weak) YBHomeNavTitleView *titleView;
 /// 微薄数据
 @property(nonatomic, strong) NSMutableArray *dataArr;
+/// 刷新控件
+@property(nonatomic, weak) YBHomeRefreshControl *refreshC;
+/// 标记拖拽
+@property(nonatomic, assign) BOOL isDraggingTag;
+/// 是否正在加载数据
+@property(nonatomic, assign) BOOL isLoadData;
 
 @end
 
@@ -37,15 +51,18 @@
     // 注册Cell
     [self.tableView registerClass:[YBHomeTableViewCell class] forCellReuseIdentifier:@"YBHomeTableViewCell"];
     // 获取数据
-    [self getWeiBoData];
+    [self getWeiBoData:YBHomeLoadWeiBoDataStyleOne];
     // 准备UI
     [self prepareUI];
     // 注册通知
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(homeDismissAnimatedTransitioningNotification) name:YBHomeDismissAnimatedTransitioningNotification object:nil];
-    /// 点击图片通知
+    // 点击图片通知
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(homeImageCollectionViewNotification:) name:YBHomeImageCollectionViewNotification object:nil];
     
     self.tableView.estimatedRowHeight = 300;
+    // 刷新控件
+    self.refreshControl = [[YBHomeRefreshControl alloc] init];
+    self.refreshC = (YBHomeRefreshControl *)self.refreshControl;
 }
 
 #pragma mark - 内存警告
@@ -55,15 +72,39 @@
 }
 
 #pragma mark - 获取微薄数据
-- (void)getWeiBoData {
+- (void)getWeiBoData:(YBHomeLoadWeiBoDataStyle)loadWeiBoDataStyle {
+    if (self.isLoadData) {
+        return;
+    }
+    // 标记正在加载数据
+    self.isLoadData = YES;
+    NSInteger newId = 0;
+//    NSInteger OldId = 0;
+    // 判断当前加载类型
+    if (loadWeiBoDataStyle == YBHomeLoadWeiBoDataStyleNew) {
+        YBWeiBoDataModel *daraModel = self.dataArr[0];
+        newId = daraModel.id;
+        YBLog(@"%zd",newId)
+    }
+    
     __weak typeof(self) selfVc = self;
-    [YBWeiBoDataModel loadWeiBoDataModel:^(NSArray *weiMoModels, BOOL isError) {
+    [YBWeiBoDataModel loadWeiBoDataModelWithNewId:newId :^(NSArray *weiMoModels, BOOL isError){
+        selfVc.isLoadData = NO;
         if (!isError) { // 网络加载成功
             if(weiMoModels.count){ // 加载到数据
-                selfVc.dataArr = (NSMutableArray *)weiMoModels;
+                if (self.dataArr.count == 0) {
+                    selfVc.dataArr = (NSMutableArray *)weiMoModels;
+                }else if (loadWeiBoDataStyle == YBHomeLoadWeiBoDataStyleNew) {
+                    [selfVc.dataArr insertObjects:weiMoModels atIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, weiMoModels.count)]];
+                }
+                [selfVc.tableView reloadData];
             }else{ // 没有新数据
-            
+                
             }
+            NSLog(@"加载了 %zd 条微博",weiMoModels.count);
+            // 标记加载完成
+            [selfVc.refreshC endRefreshing];
+            
         }else{ // 网络加载失败
             
         }
@@ -87,6 +128,7 @@
 #pragma mark - 按钮点击事件
 /// 导航栏左边按钮点击
 - (void)leftBarButtonItemClick{
+    [self.refreshC endRefreshing];
     YBLog(@"导航栏左边按钮点击%s",__FUNCTION__);
 }
 
@@ -107,7 +149,7 @@
     [self presentViewController:popVC animated:YES completion:nil];
 }
 
-#pragma mark - 代理事件
+#pragma mark - 自定义代理事件
 /// 通知代理
 - (void)homeDismissAnimatedTransitioningNotification {
     [self titleViewClick:self.titleView];
@@ -119,6 +161,42 @@
     YBHomePictureViewController *vc = [[YBHomePictureViewController alloc] initWithDataModel:notification.userInfo[@"dataModel"]];
     vc.modalPresentationStyle = UIModalPresentationCustom;
     [self presentViewController:vc animated:YES completion:nil];
+}
+
+#pragma mark - scrollView代理
+/// 停止拖拽的时候调用
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+    self.isDraggingTag = NO;
+    // 如果停止拖拽的时候小于60 如果开始就关闭
+    if (scrollView.contentOffset.y > -123 && self.refreshC.isRefreshing) {
+        [UIView animateWithDuration:0.25 animations:^{
+            scrollView.contentOffset = CGPointMake(0, -64);
+        } completion:^(BOOL finished) {
+            self.refreshC.refreshControlSta = YBHomeRefreshControlStateDown;
+            [self.refreshC endRefreshing];
+        }];
+    }else if (scrollView.contentOffset.y <= -123) {
+        self.refreshC.refreshControlSta = YBHomeRefreshControlStateAnimate;
+        [self.refreshC beginRefreshing];
+        if (!self.isLoadData) {
+            YBLog(@"-----")
+            [self getWeiBoData:YBHomeLoadWeiBoDataStyleNew];
+        }
+    }
+}
+
+/// 拖拽调用
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    // 如果正在高度大于60，并且没有标记
+    if (scrollView.contentOffset.y < -123 && !self.isDraggingTag && !self.refreshC.isRefreshing) {
+        self.isDraggingTag = !self.isDraggingTag;
+        // 向上
+        self.refreshC.refreshControlSta = YBHomeRefreshControlStateUp;
+    }else if (scrollView.contentOffset.y >= -123 && self.isDraggingTag && !self.refreshC.isRefreshing) {
+        self.isDraggingTag = !self.isDraggingTag;
+        // 向下
+        self.refreshC.refreshControlSta = YBHomeRefreshControlStateDown;
+    }
 }
 
 #pragma mark - 数据源代理
@@ -163,10 +241,5 @@
 #pragma mark - 懒加载
 
 #pragma mark - 设置数据
-/// 数据数组
-- (void)setDataArr:(NSMutableArray *)dataArr {
-    _dataArr = dataArr;
-    [self.tableView reloadData];
-}
 
 @end
