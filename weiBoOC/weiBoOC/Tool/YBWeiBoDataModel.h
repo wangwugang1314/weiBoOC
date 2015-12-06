@@ -40,6 +40,6 @@ typedef void (^LoadWeiBoDataFiniash)(NSArray *weiMoModels, BOOL isError);
 @property(nonatomic, assign) CGFloat rowHeight;
 
 /// 加载网络数据
-+ (void)loadWeiBoDataModelWithNewId:(NSInteger)since_id :(LoadWeiBoDataFiniash)finish;
++ (void)loadWeiBoDataModelWithNewId:(NSInteger)since_id andOldId:(NSInteger)max_id andFinish:(LoadWeiBoDataFiniash)finish;
 
 @end

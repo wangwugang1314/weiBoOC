@@ -51,6 +51,7 @@
 		04D8DA151C09FC6D0066452E /* YBNewFeatureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D8DA141C09FC6D0066452E /* YBNewFeatureViewController.m */; };
 		04DEBBA21C09C7A000EEADED /* YBLoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04DEBBA11C09C7A000EEADED /* YBLoginView.m */; };
 		04EB99C91C13C6B7003A3A32 /* YBHomeRefreshControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 04EB99C81C13C6B7003A3A32 /* YBHomeRefreshControl.m */; };
+		04EB9A8E1C14793E003A3A32 /* YBHomeLoadMoreView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04EB9A8D1C14793E003A3A32 /* YBHomeLoadMoreView.m */; };
 		04F6F85E1C0EC9B4000A04D2 /* YBHomeCellCenterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F6F85D1C0EC9B4000A04D2 /* YBHomeCellCenterView.m */; };
 		04F6F8621C0EE119000A04D2 /* YBHomeImageCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F6F8611C0EE119000A04D2 /* YBHomeImageCollectionView.m */; };
 		04F6F8661C0F2090000A04D2 /* YBHomeCellBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F6F8651C0F2090000A04D2 /* YBHomeCellBottomView.m */; };
@@ -198,6 +199,8 @@
 		04DF42F61C08B62F008748B1 /* YBSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YBSingleton.h; sourceTree = "<group>"; };
 		04EB99C71C13C6B7003A3A32 /* YBHomeRefreshControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YBHomeRefreshControl.h; sourceTree = "<group>"; };
 		04EB99C81C13C6B7003A3A32 /* YBHomeRefreshControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YBHomeRefreshControl.m; sourceTree = "<group>"; };
+		04EB9A8C1C14793E003A3A32 /* YBHomeLoadMoreView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YBHomeLoadMoreView.h; sourceTree = "<group>"; };
+		04EB9A8D1C14793E003A3A32 /* YBHomeLoadMoreView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YBHomeLoadMoreView.m; sourceTree = "<group>"; };
 		04F6F85C1C0EC9B4000A04D2 /* YBHomeCellCenterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YBHomeCellCenterView.h; sourceTree = "<group>"; };
 		04F6F85D1C0EC9B4000A04D2 /* YBHomeCellCenterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YBHomeCellCenterView.m; sourceTree = "<group>"; };
 		04F6F8601C0EE119000A04D2 /* YBHomeImageCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YBHomeImageCollectionView.h; sourceTree = "<group>"; };
@@ -849,6 +852,8 @@
 			children = (
 				04EB99C71C13C6B7003A3A32 /* YBHomeRefreshControl.h */,
 				04EB99C81C13C6B7003A3A32 /* YBHomeRefreshControl.m */,
+				04EB9A8C1C14793E003A3A32 /* YBHomeLoadMoreView.h */,
+				04EB9A8D1C14793E003A3A32 /* YBHomeLoadMoreView.m */,
 			);
 			name = "刷新控件";
 			sourceTree = "<group>";
@@ -1238,6 +1243,7 @@
 				04B4CBB51C0D2FC1008E9701 /* YBHomeDismissAnimatedTransitioning.m in Sources */,
 				04B4CBAC1C0D2732008E9701 /* YBHomePopViewController.m in Sources */,
 				04D248BA1C06C1C4007AF5E0 /* UIScreen+Category.m in Sources */,
+				04EB9A8E1C14793E003A3A32 /* YBHomeLoadMoreView.m in Sources */,
 				04B4CBBB1C0D3314008E9701 /* YBHomePopView.m in Sources */,
 				04EB99C91C13C6B7003A3A32 /* YBHomeRefreshControl.m in Sources */,
 				04B4CBD71C0DB3C6008E9701 /* YBHomeCellTopView.m in Sources */,

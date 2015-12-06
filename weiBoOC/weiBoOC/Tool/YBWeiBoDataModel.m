@@ -33,8 +33,8 @@
 
 #pragma mark - 加载网络数据
 /// 加载网络数据
-+ (void)loadWeiBoDataModelWithNewId:(NSInteger)since_id :(LoadWeiBoDataFiniash)finish {
-    [YBNetworking loadWeiBoDataWithNewId:since_id Finish:^(id success, NSError *error) {
++ (void)loadWeiBoDataModelWithNewId:(NSInteger)since_id andOldId:(NSInteger)max_id andFinish:(LoadWeiBoDataFiniash)finish {
+    [YBNetworking loadWeiBoDataWithNewId:since_id andOld:max_id andFinish:^(id success, NSError *error) {
         // 判断数据是否加载成功
         if (error == nil) { // 网络加载成功
             NSMutableArray *arrM = [NSMutableArray array];

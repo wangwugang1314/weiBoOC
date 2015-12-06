@@ -18,6 +18,7 @@
 #import "YBHomeImageCollectionView.h"
 #import "YBHomePictureViewController.h"
 #import "YBHomeRefreshControl.h"
+#import "YBHomeLoadMoreView.h"
 
 /// 数据加载类型
 typedef NS_ENUM(NSInteger, YBHomeLoadWeiBoDataStyle) {
@@ -38,6 +39,12 @@ typedef NS_ENUM(NSInteger, YBHomeLoadWeiBoDataStyle) {
 @property(nonatomic, assign) BOOL isDraggingTag;
 /// 是否正在加载数据
 @property(nonatomic, assign) BOOL isLoadData;
+/// 显示更新微博数
+@property(nonatomic, weak) UILabel *showWeiBoNum;
+/// 标记是否正在动画
+@property(nonatomic, assign) BOOL isAnimation;
+/// 页脚（上拉更多）
+@property(nonatomic, weak) YBHomeLoadMoreView *loadMoreView;
 
 @end
 
@@ -63,6 +70,10 @@ typedef NS_ENUM(NSInteger, YBHomeLoadWeiBoDataStyle) {
     // 刷新控件
     self.refreshControl = [[YBHomeRefreshControl alloc] init];
     self.refreshC = (YBHomeRefreshControl *)self.refreshControl;
+    // 页脚
+    YBHomeLoadMoreView *loadMoreView = [YBHomeLoadMoreView new];
+    self.tableView.tableFooterView = loadMoreView;
+    self.loadMoreView = loadMoreView;
 }
 
 #pragma mark - 内存警告
@@ -79,32 +90,54 @@ typedef NS_ENUM(NSInteger, YBHomeLoadWeiBoDataStyle) {
     // 标记正在加载数据
     self.isLoadData = YES;
     NSInteger newId = 0;
-//    NSInteger OldId = 0;
+    NSInteger OldId = 0;
     // 判断当前加载类型
     if (loadWeiBoDataStyle == YBHomeLoadWeiBoDataStyleNew) {
         YBWeiBoDataModel *daraModel = self.dataArr[0];
         newId = daraModel.id;
-        YBLog(@"%zd",newId)
+    }else if(loadWeiBoDataStyle == YBHomeLoadWeiBoDataStyleOld) {
+        YBWeiBoDataModel *daraModel = [self.dataArr lastObject];
+        OldId = daraModel.id;
     }
     
     __weak typeof(self) selfVc = self;
-    [YBWeiBoDataModel loadWeiBoDataModelWithNewId:newId :^(NSArray *weiMoModels, BOOL isError){
+    [YBWeiBoDataModel loadWeiBoDataModelWithNewId:newId andOldId:OldId andFinish:^(NSArray *weiMoModels, BOOL isError) {
+        
         selfVc.isLoadData = NO;
+        // 标记加载完成
+        [selfVc.refreshC endRefreshing];
         if (!isError) { // 网络加载成功
             if(weiMoModels.count){ // 加载到数据
-                if (self.dataArr.count == 0) {
+                if (self.dataArr.count == 0) { // 第一次加载
                     selfVc.dataArr = (NSMutableArray *)weiMoModels;
-                }else if (loadWeiBoDataStyle == YBHomeLoadWeiBoDataStyleNew) {
+                }else if (loadWeiBoDataStyle == YBHomeLoadWeiBoDataStyleNew) { // 下拉刷新
                     [selfVc.dataArr insertObjects:weiMoModels atIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, weiMoModels.count)]];
+                }else if (loadWeiBoDataStyle == YBHomeLoadWeiBoDataStyleOld) { // 上拉加载更多
+                    // 移除随后一个数据
+                    [self.dataArr removeLastObject];
+                    // 添加数据
+                    [self.dataArr addObjectsFromArray:weiMoModels];
                 }
                 [selfVc.tableView reloadData];
+                selfVc.showWeiBoNum.text = [NSString stringWithFormat:@"更新了%zd条微薄",weiMoModels.count];
             }else{ // 没有新数据
-                
+                selfVc.showWeiBoNum.text = [NSString stringWithFormat:@"没有新微薄"];
             }
-            NSLog(@"加载了 %zd 条微博",weiMoModels.count);
-            // 标记加载完成
-            [selfVc.refreshC endRefreshing];
-            
+            if (!selfVc.isAnimation) {
+                selfVc.isAnimation = YES;
+                // 设置加载显示说句
+                [UIView animateWithDuration:0.4 animations:^{
+                    selfVc.showWeiBoNum.alpha = 0.9;
+                    selfVc.showWeiBoNum.transform = CGAffineTransformMakeTranslation(0, 44);
+                } completion:^(BOOL finished) {
+                    [UIView animateWithDuration:1 delay:1 options:0 animations:^{
+                        selfVc.showWeiBoNum.transform = CGAffineTransformIdentity;
+                        selfVc.showWeiBoNum.alpha = 0;
+                    } completion:^(BOOL finished) {
+                        selfVc.isAnimation = NO;
+                    }];
+                }];
+            }
         }else{ // 网络加载失败
             
         }
@@ -179,7 +212,6 @@ typedef NS_ENUM(NSInteger, YBHomeLoadWeiBoDataStyle) {
         self.refreshC.refreshControlSta = YBHomeRefreshControlStateAnimate;
         [self.refreshC beginRefreshing];
         if (!self.isLoadData) {
-            YBLog(@"-----")
             [self getWeiBoData:YBHomeLoadWeiBoDataStyleNew];
         }
     }
@@ -206,12 +238,17 @@ typedef NS_ENUM(NSInteger, YBHomeLoadWeiBoDataStyle) {
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     YBHomeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"YBHomeTableViewCell"];
+    // 如果当前行是最后一行就加载数据
+    if(indexPath.row == self.dataArr.count - 1) {
+        // 加载更多数据
+        [self getWeiBoData:YBHomeLoadWeiBoDataStyleOld];
+    }
     // 设置数据
     cell.dataModel = self.dataArr[indexPath.row];
     return cell;
 }
 
-/// 点击行不显示高亮
+#pragma mark - tableView代理
 - (BOOL)tableView:(UITableView *)tableView shouldHighlightRowAtIndexPath:(NSIndexPath *)indexPath {
     return NO;
 }
@@ -239,7 +276,20 @@ typedef NS_ENUM(NSInteger, YBHomeLoadWeiBoDataStyle) {
 }
 
 #pragma mark - 懒加载
+/// 显示更新微博数
+- (UILabel *)showWeiBoNum {
+    if (_showWeiBoNum == nil) {
+        UILabel *view = [UILabel new];
+        [self.navigationController.navigationBar addSubview:view];
+        [self.navigationController.navigationBar sendSubviewToBack:view];
+        view.textAlignment = NSTextAlignmentCenter;
+        view.backgroundColor = [UIColor orangeColor];
+        view.frame = CGRectMake(0, 0, [UIScreen width], 40);
+        view.alpha = 0;
+        _showWeiBoNum = view;
+    }
+    return _showWeiBoNum;
+}
 
-#pragma mark - 设置数据
 
 @end

@@ -64,7 +64,7 @@
 /// 导航栏右边按钮点击
 - (void)rightBarButtonItemClick {
     // 填充账号密码
-    [self.webView stringByEvaluatingJavaScriptFromString:@"document.getElementById('userId').value='2300554150@qq.com';document.getElementById('passwd').value='w123456';"];
+    [self.webView stringByEvaluatingJavaScriptFromString:@"document.getElementById('userId').value='18567680596';document.getElementById('passwd').value='www123456';"];
 }
 
 #pragma mark - 代理

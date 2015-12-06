@@ -22,7 +22,7 @@ YBSingleton_m(userModel)
 
 #pragma mark - 加载微薄数据
 /// 加载微薄数据
-+ (void)loadWeiBoDataWithNewId:(NSInteger)since_id Finish:(networkFinish)finish {
++ (void)loadWeiBoDataWithNewId:(NSInteger)since_id andOld:(NSInteger)max_id andFinish:(networkFinish)finish {
     // 地址
     NSString *path = @"/2/statuses/home_timeline.json";
     // 参数
@@ -32,6 +32,8 @@ YBSingleton_m(userModel)
     // 如果是加载新数据
     if (since_id != 0) {
         [dic setObject:@(since_id) forKey:@"since_id"];
+    }else if (max_id != 0) {
+        [dic setObject:@(max_id) forKey:@"max_id"];
     }
     // 发送网络请求
     [[YBNetworking shareduserModel] GET:path parameters:[dic copy] andFinish:^(id success, NSError *error) {
@@ -106,12 +108,12 @@ YBSingleton_m(userModel)
 
 /// AppKey
 - (NSString *)client_id{
-    return @"3114004915";
+    return @"4261273397";
 }
 
 /// App Secret
 - (NSString *)client_secret{
-    return @"5103183927472feb86ffb7e5761811f9";;
+    return @"dc7e5074eccc1314683566033e684729";;
 }
 
 /// 回调地址

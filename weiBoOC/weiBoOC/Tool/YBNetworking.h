@@ -26,6 +26,6 @@ YBSingleton_h(userModel)
 /// 加载用户数据
 + (void)loadUserDataWithFinish:(networkFinish)finish;
 /// 加载微薄数据
-+ (void)loadWeiBoDataWithNewId:(NSInteger)since_id Finish:(networkFinish)finish;
++ (void)loadWeiBoDataWithNewId:(NSInteger)since_id andOld:(NSInteger)max_id andFinish:(networkFinish)finish;
 
 @end
