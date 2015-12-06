@@ -106,12 +106,12 @@ YBSingleton_m(userModel)
 
 /// AppKey
 - (NSString *)client_id{
-    return @"2811696621";
+    return @"3114004915";
 }
 
 /// App Secret
 - (NSString *)client_secret{
-    return @"283af988db3ec9bbb6fbb8cd41ec9d7c";;
+    return @"5103183927472feb86ffb7e5761811f9";;
 }
 
 /// 回调地址
