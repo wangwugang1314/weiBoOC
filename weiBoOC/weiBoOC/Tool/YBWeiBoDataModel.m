@@ -82,6 +82,8 @@
             if(image != nil && error == nil) { // 加载成功
                 if (image.size.width < 40) { // 长图
                     dataModel.imageSize = CGSizeMake(80, 90);
+                }else if(image.size.width > [UIScreen width] - 20) {
+                    dataModel.imageSize = CGSizeMake([UIScreen width] - 20, image.size.height * (([UIScreen width] - 20) / image.size.width));
                 }else{
                     dataModel.imageSize = image.size;
                 }

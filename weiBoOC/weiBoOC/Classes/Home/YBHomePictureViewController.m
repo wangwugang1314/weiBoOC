@@ -82,7 +82,6 @@
 - (void)setterCollectionView {
     // 注册cell
     [self.collectionView registerClass:[YBHomePictureCell class] forCellWithReuseIdentifier:@"YBHomePictureCell"];
-    self.collectionView.backgroundColor = [UIColor orangeColor];
     // 设置frame
     self.collectionView.frame = CGRectMake(0, 0, [UIScreen width] + 10, [UIScreen height]);
     // 分页
@@ -123,7 +122,7 @@
     // 获取当前显示的索引
     NSIndexPath *indexPath  =[[self.collectionView indexPathsForVisibleItems] lastObject];
     self.indexView.text = [NSString stringWithFormat:@"%zd/%zd", indexPath.item + 1, self.dataModel.pic_urls.count];
-    self.dataModel.index = indexPath.item + 1;
+    self.dataModel.index = indexPath.item;
 }
 
 #pragma mark - cell代理
@@ -150,6 +149,7 @@
     if (_indexView == nil) {
         UILabel *view = [UILabel new];
         [self.view addSubview:view];
+        view.textColor = [UIColor orangeColor];
         view.text = [NSString stringWithFormat:@"%zd/%zd",self.dataModel.index + 1 ,self.dataModel.pic_urls.count];
         _indexView = view;
     }
@@ -162,6 +162,8 @@
         UIButton *but = [UIButton new];
         but.backgroundColor = [UIColor colorWithWhite:1 alpha:0.5];
         [but addTarget:self action:@selector(saveImageViewClick) forControlEvents:UIControlEventTouchUpInside];
+        [but setTitleColor:[UIColor orangeColor] forState:UIControlStateNormal];
+        [but setTitleColor:[UIColor grayColor] forState:UIControlStateHighlighted];
         [but setTitle:@"保存" forState:UIControlStateNormal];
         [self.view addSubview:but];
         _saveImageView = but;
@@ -176,6 +178,8 @@
         but.backgroundColor = [UIColor colorWithWhite:1 alpha:0.5];
         [but addTarget:self action:@selector(breakViewClick) forControlEvents:UIControlEventTouchUpInside];
         [but setTitle:@"返回" forState:UIControlStateNormal];
+        [but setTitleColor:[UIColor orangeColor] forState:UIControlStateNormal];
+        [but setTitleColor:[UIColor grayColor] forState:UIControlStateHighlighted];
         [self.view addSubview:but];
         _breakView = but;
     }

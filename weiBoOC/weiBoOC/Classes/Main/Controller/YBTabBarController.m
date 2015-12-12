@@ -8,6 +8,8 @@
 
 #import "YBTabBarController.h"
 #import "YBBaseNavigationController.h"
+#import "YBUserModel.h"
+#import "YBSendViewController.h"
 
 @interface YBTabBarController ()
 
@@ -72,7 +74,12 @@
 
 /// 中间按钮点击
 - (void)centerButClick{
-    YBLog(@"中间按钮点击");
+    // 首先判断是都登录
+    if([YBUserModel userModel].isLogin) {
+        [self presentViewController:[[UINavigationController alloc] initWithRootViewController:[YBSendViewController new]] animated:YES completion:nil];
+    }else{
+        [SVProgressHUD showErrorWithStatus:@"请登录账号"];
+    }
 }
 
 #pragma mark - 懒加载

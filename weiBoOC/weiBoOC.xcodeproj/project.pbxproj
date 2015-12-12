@@ -7,10 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		04047A331C17080300EA5859 /* FFLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04047A321C17080300EA5859 /* FFLabel.swift */; };
+		04047A371C170E3200EA5859 /* YBHomeWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04047A361C170E3200EA5859 /* YBHomeWebViewController.m */; };
+		040A7D721C1B081E002DEEDA /* YBTextAttachment.m in Sources */ = {isa = PBXBuildFile; fileRef = 040A7D711C1B081E002DEEDA /* YBTextAttachment.m */; };
+		0437FEDB1C18150B00891686 /* YBSendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0437FEDA1C18150B00891686 /* YBSendViewController.m */; };
+		0437FEE11C1847D700891686 /* YBSendToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 0437FEE01C1847D700891686 /* YBSendToolBar.m */; };
+		0437FEE71C18489400891686 /* YBSendTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0437FEE61C18489400891686 /* YBSendTextView.m */; };
+		0437FEEB1C185C7E00891686 /* YBEmotionKeyBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = 0437FEEA1C185C7E00891686 /* YBEmotionKeyBoard.m */; };
 		043E39981C0DE6ED0095ED9D /* TestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 043E39971C0DE6ED0095ED9D /* TestTests.m */; };
 		043E39A31C0DE6ED0095ED9D /* TestUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 043E39A21C0DE6ED0095ED9D /* TestUITests.m */; };
 		0449DA2C1C089AF100D1730C /* YBUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0449DA2B1C089AF100D1730C /* YBUserModel.m */; };
 		0449DA2F1C089B0900D1730C /* YBNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 0449DA2E1C089B0900D1730C /* YBNetworking.m */; };
+		044DC78B1C196C2C00C8BE75 /* YBEmotionGroupCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 044DC78A1C196C2C00C8BE75 /* YBEmotionGroupCell.m */; };
+		044DC7951C1980A400C8BE75 /* YBEmotionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 044DC7941C1980A400C8BE75 /* YBEmotionCell.m */; };
 		0455F3781C0A95770062FA12 /* YBNewFeatureCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0455F3771C0A95770062FA12 /* YBNewFeatureCollectionCell.m */; };
 		0455F37F1C0ABFB60062FA12 /* YBIsNewVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = 0455F37E1C0ABFB60062FA12 /* YBIsNewVersion.m */; };
 		0455F3881C0ADB0A0062FA12 /* YBWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0455F3871C0ADB0A0062FA12 /* YBWebView.m */; };
@@ -22,6 +31,9 @@
 		0489EEE11C12CFA7008FDBA6 /* YBHomePictuerPresentAnimatedTransitioning.m in Sources */ = {isa = PBXBuildFile; fileRef = 0489EEE01C12CFA7008FDBA6 /* YBHomePictuerPresentAnimatedTransitioning.m */; };
 		0489EEE41C12EF12008FDBA6 /* YBHomePictureCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0489EEE31C12EF12008FDBA6 /* YBHomePictureCell.m */; };
 		0489EEE71C130E54008FDBA6 /* YBHomePictuerDismissAnimatedTransitioning.m in Sources */ = {isa = PBXBuildFile; fileRef = 0489EEE61C130E54008FDBA6 /* YBHomePictuerDismissAnimatedTransitioning.m */; };
+		04925F3C1C195AA400C4AEAF /* YBEmoticon.m in Sources */ = {isa = PBXBuildFile; fileRef = 04925F3B1C195AA400C4AEAF /* YBEmoticon.m */; };
+		04925F3F1C195ED500C4AEAF /* YBEmotionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04925F3E1C195ED500C4AEAF /* YBEmotionView.m */; };
+		04925F421C195EF700C4AEAF /* YBEmotionGroupView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04925F411C195EF700C4AEAF /* YBEmotionGroupView.m */; };
 		04A4ABD71C05FD46004058CC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A4ABD61C05FD46004058CC /* main.m */; };
 		04A4ABDA1C05FD46004058CC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A4ABD91C05FD46004058CC /* AppDelegate.m */; };
 		04A4ABE21C05FD46004058CC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04A4ABE11C05FD46004058CC /* Assets.xcassets */; };
@@ -36,6 +48,7 @@
 		04B4CBCE1C0DA9F4008E9701 /* YBWeiBoUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B4CBCD1C0DA9F4008E9701 /* YBWeiBoUserModel.m */; };
 		04B4CBD31C0DB397008E9701 /* YBHomeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B4CBD21C0DB397008E9701 /* YBHomeTableViewCell.m */; };
 		04B4CBD71C0DB3C6008E9701 /* YBHomeCellTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B4CBD61C0DB3C6008E9701 /* YBHomeCellTopView.m */; };
+		04B753561C1A553B00BAD9EE /* YBEmoji.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B753551C1A553B00BAD9EE /* YBEmoji.swift */; };
 		04D248AF1C06C0BB007AF5E0 /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D248AE1C06C0BB007AF5E0 /* UIView+Extension.m */; };
 		04D248B31C06C0C2007AF5E0 /* UIColor+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D248B21C06C0C2007AF5E0 /* UIColor+Category.m */; };
 		04D248BA1C06C1C4007AF5E0 /* UIScreen+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D248B91C06C1C4007AF5E0 /* UIScreen+Category.m */; };
@@ -50,12 +63,12 @@
 		04D8DA121C09FC0F0066452E /* YBWelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D8DA111C09FC0F0066452E /* YBWelcomeViewController.m */; };
 		04D8DA151C09FC6D0066452E /* YBNewFeatureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D8DA141C09FC6D0066452E /* YBNewFeatureViewController.m */; };
 		04DEBBA21C09C7A000EEADED /* YBLoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04DEBBA11C09C7A000EEADED /* YBLoginView.m */; };
-		04EB99C91C13C6B7003A3A32 /* YBHomeRefreshControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 04EB99C81C13C6B7003A3A32 /* YBHomeRefreshControl.m */; };
-		04EB9A8E1C14793E003A3A32 /* YBHomeLoadMoreView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04EB9A8D1C14793E003A3A32 /* YBHomeLoadMoreView.m */; };
 		04F6F85E1C0EC9B4000A04D2 /* YBHomeCellCenterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F6F85D1C0EC9B4000A04D2 /* YBHomeCellCenterView.m */; };
 		04F6F8621C0EE119000A04D2 /* YBHomeImageCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F6F8611C0EE119000A04D2 /* YBHomeImageCollectionView.m */; };
 		04F6F8661C0F2090000A04D2 /* YBHomeCellBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F6F8651C0F2090000A04D2 /* YBHomeCellBottomView.m */; };
 		04F6F8691C0F3A87000A04D2 /* YBHomeCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F6F8681C0F3A87000A04D2 /* YBHomeCollectionViewCell.m */; };
+		04FF38CB1C1919F100984C90 /* Emoticons.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 04FF38CA1C1919F100984C90 /* Emoticons.bundle */; };
+		04FF38CE1C191A7700984C90 /* YBEmoticonsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 04FF38CD1C191A7700984C90 /* YBEmoticonsModel.m */; };
 		71DDE2CAC86CB194EE6A3224 /* libPods-weiBoOC.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7228C33389DAAF2D59802A7A /* libPods-weiBoOC.a */; };
 /* End PBXBuildFile section */
 
@@ -91,6 +104,20 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		04047A311C17080200EA5859 /* weiBoOC-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "weiBoOC-Bridging-Header.h"; sourceTree = "<group>"; };
+		04047A321C17080300EA5859 /* FFLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FFLabel.swift; sourceTree = "<group>"; };
+		04047A351C170E3200EA5859 /* YBHomeWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YBHomeWebViewController.h; sourceTree = "<group>"; };
+		04047A361C170E3200EA5859 /* YBHomeWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YBHomeWebViewController.m; sourceTree = "<group>"; };
+		040A7D701C1B081E002DEEDA /* YBTextAttachment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YBTextAttachment.h; sourceTree = "<group>"; };
+		040A7D711C1B081E002DEEDA /* YBTextAttachment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YBTextAttachment.m; sourceTree = "<group>"; };
+		0437FED91C18150B00891686 /* YBSendViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YBSendViewController.h; sourceTree = "<group>"; };
+		0437FEDA1C18150B00891686 /* YBSendViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YBSendViewController.m; sourceTree = "<group>"; };
+		0437FEDF1C1847D700891686 /* YBSendToolBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YBSendToolBar.h; sourceTree = "<group>"; };
+		0437FEE01C1847D700891686 /* YBSendToolBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YBSendToolBar.m; sourceTree = "<group>"; };
+		0437FEE51C18489400891686 /* YBSendTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YBSendTextView.h; sourceTree = "<group>"; };
+		0437FEE61C18489400891686 /* YBSendTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YBSendTextView.m; sourceTree = "<group>"; };
+		0437FEE91C185C7E00891686 /* YBEmotionKeyBoard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YBEmotionKeyBoard.h; sourceTree = "<group>"; };
+		0437FEEA1C185C7E00891686 /* YBEmotionKeyBoard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YBEmotionKeyBoard.m; sourceTree = "<group>"; };
 		043E397B1C0DE6EC0095ED9D /* Test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Test.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		043E39931C0DE6ED0095ED9D /* TestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TestTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		043E39971C0DE6ED0095ED9D /* TestTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestTests.m; sourceTree = "<group>"; };
@@ -102,6 +129,10 @@
 		0449DA2B1C089AF100D1730C /* YBUserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YBUserModel.m; sourceTree = "<group>"; };
 		0449DA2D1C089B0900D1730C /* YBNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YBNetworking.h; sourceTree = "<group>"; };
 		0449DA2E1C089B0900D1730C /* YBNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YBNetworking.m; sourceTree = "<group>"; };
+		044DC7891C196C2C00C8BE75 /* YBEmotionGroupCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YBEmotionGroupCell.h; sourceTree = "<group>"; };
+		044DC78A1C196C2C00C8BE75 /* YBEmotionGroupCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YBEmotionGroupCell.m; sourceTree = "<group>"; };
+		044DC7931C1980A400C8BE75 /* YBEmotionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YBEmotionCell.h; sourceTree = "<group>"; };
+		044DC7941C1980A400C8BE75 /* YBEmotionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YBEmotionCell.m; sourceTree = "<group>"; };
 		0455F3761C0A95770062FA12 /* YBNewFeatureCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YBNewFeatureCollectionCell.h; sourceTree = "<group>"; };
 		0455F3771C0A95770062FA12 /* YBNewFeatureCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YBNewFeatureCollectionCell.m; sourceTree = "<group>"; };
 		0455F37D1C0ABFB60062FA12 /* YBIsNewVersion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YBIsNewVersion.h; path = ../Tool/YBIsNewVersion.h; sourceTree = "<group>"; };
@@ -137,6 +168,12 @@
 		0489EEE31C12EF12008FDBA6 /* YBHomePictureCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YBHomePictureCell.m; sourceTree = "<group>"; };
 		0489EEE51C130E54008FDBA6 /* YBHomePictuerDismissAnimatedTransitioning.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YBHomePictuerDismissAnimatedTransitioning.h; sourceTree = "<group>"; };
 		0489EEE61C130E54008FDBA6 /* YBHomePictuerDismissAnimatedTransitioning.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YBHomePictuerDismissAnimatedTransitioning.m; sourceTree = "<group>"; };
+		04925F3A1C195AA400C4AEAF /* YBEmoticon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YBEmoticon.h; sourceTree = "<group>"; };
+		04925F3B1C195AA400C4AEAF /* YBEmoticon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YBEmoticon.m; sourceTree = "<group>"; };
+		04925F3D1C195ED500C4AEAF /* YBEmotionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YBEmotionView.h; sourceTree = "<group>"; };
+		04925F3E1C195ED500C4AEAF /* YBEmotionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YBEmotionView.m; sourceTree = "<group>"; };
+		04925F401C195EF700C4AEAF /* YBEmotionGroupView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YBEmotionGroupView.h; sourceTree = "<group>"; };
+		04925F411C195EF700C4AEAF /* YBEmotionGroupView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YBEmotionGroupView.m; sourceTree = "<group>"; };
 		04A4ABD21C05FD46004058CC /* weiBoOC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = weiBoOC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04A4ABD61C05FD46004058CC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		04A4ABD81C05FD46004058CC /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = ../AppDelegate.h; sourceTree = "<group>"; };
@@ -167,6 +204,7 @@
 		04B4CBD21C0DB397008E9701 /* YBHomeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YBHomeTableViewCell.m; sourceTree = "<group>"; };
 		04B4CBD51C0DB3C6008E9701 /* YBHomeCellTopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YBHomeCellTopView.h; sourceTree = "<group>"; };
 		04B4CBD61C0DB3C6008E9701 /* YBHomeCellTopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YBHomeCellTopView.m; sourceTree = "<group>"; };
+		04B753551C1A553B00BAD9EE /* YBEmoji.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YBEmoji.swift; sourceTree = "<group>"; };
 		04D248AD1C06C0BB007AF5E0 /* UIView+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Extension.h"; sourceTree = "<group>"; };
 		04D248AE1C06C0BB007AF5E0 /* UIView+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extension.m"; sourceTree = "<group>"; };
 		04D248B11C06C0C2007AF5E0 /* UIColor+Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Category.h"; sourceTree = "<group>"; };
@@ -197,10 +235,6 @@
 		04DEBBA01C09C7A000EEADED /* YBLoginView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YBLoginView.h; sourceTree = "<group>"; };
 		04DEBBA11C09C7A000EEADED /* YBLoginView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YBLoginView.m; sourceTree = "<group>"; };
 		04DF42F61C08B62F008748B1 /* YBSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YBSingleton.h; sourceTree = "<group>"; };
-		04EB99C71C13C6B7003A3A32 /* YBHomeRefreshControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YBHomeRefreshControl.h; sourceTree = "<group>"; };
-		04EB99C81C13C6B7003A3A32 /* YBHomeRefreshControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YBHomeRefreshControl.m; sourceTree = "<group>"; };
-		04EB9A8C1C14793E003A3A32 /* YBHomeLoadMoreView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YBHomeLoadMoreView.h; sourceTree = "<group>"; };
-		04EB9A8D1C14793E003A3A32 /* YBHomeLoadMoreView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YBHomeLoadMoreView.m; sourceTree = "<group>"; };
 		04F6F85C1C0EC9B4000A04D2 /* YBHomeCellCenterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YBHomeCellCenterView.h; sourceTree = "<group>"; };
 		04F6F85D1C0EC9B4000A04D2 /* YBHomeCellCenterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YBHomeCellCenterView.m; sourceTree = "<group>"; };
 		04F6F8601C0EE119000A04D2 /* YBHomeImageCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YBHomeImageCollectionView.h; sourceTree = "<group>"; };
@@ -209,6 +243,9 @@
 		04F6F8651C0F2090000A04D2 /* YBHomeCellBottomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YBHomeCellBottomView.m; sourceTree = "<group>"; };
 		04F6F8671C0F3A87000A04D2 /* YBHomeCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YBHomeCollectionViewCell.h; sourceTree = "<group>"; };
 		04F6F8681C0F3A87000A04D2 /* YBHomeCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YBHomeCollectionViewCell.m; sourceTree = "<group>"; };
+		04FF38CA1C1919F100984C90 /* Emoticons.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Emoticons.bundle; sourceTree = "<group>"; };
+		04FF38CC1C191A7700984C90 /* YBEmoticonsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YBEmoticonsModel.h; sourceTree = "<group>"; };
+		04FF38CD1C191A7700984C90 /* YBEmoticonsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YBEmoticonsModel.m; sourceTree = "<group>"; };
 		4BC1C7C0D486A44106590B37 /* Pods-weiBoOC.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-weiBoOC.debug.xcconfig"; path = "Pods/Target Support Files/Pods-weiBoOC/Pods-weiBoOC.debug.xcconfig"; sourceTree = "<group>"; };
 		7228C33389DAAF2D59802A7A /* libPods-weiBoOC.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-weiBoOC.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB6AF1BAD89AFA45D8D7952E /* Pods-weiBoOC.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-weiBoOC.release.xcconfig"; path = "Pods/Target Support Files/Pods-weiBoOC/Pods-weiBoOC.release.xcconfig"; sourceTree = "<group>"; };
@@ -261,6 +298,36 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		04047A341C170E1700EA5859 /* webView */ = {
+			isa = PBXGroup;
+			children = (
+				04047A351C170E3200EA5859 /* YBHomeWebViewController.h */,
+				04047A361C170E3200EA5859 /* YBHomeWebViewController.m */,
+			);
+			name = webView;
+			sourceTree = "<group>";
+		};
+		040A7D6F1C1B0809002DEEDA /* 附件 */ = {
+			isa = PBXGroup;
+			children = (
+				040A7D701C1B081E002DEEDA /* YBTextAttachment.h */,
+				040A7D711C1B081E002DEEDA /* YBTextAttachment.m */,
+			);
+			name = "附件";
+			sourceTree = "<group>";
+		};
+		0437FEE81C185C2800891686 /* 表情键盘 */ = {
+			isa = PBXGroup;
+			children = (
+				040A7D6F1C1B0809002DEEDA /* 附件 */,
+				044DC78C1C197B9700C8BE75 /* 上面 */,
+				044DC7881C196BFB00C8BE75 /* 底部 */,
+				0437FEE91C185C7E00891686 /* YBEmotionKeyBoard.h */,
+				0437FEEA1C185C7E00891686 /* YBEmotionKeyBoard.m */,
+			);
+			name = "表情键盘";
+			sourceTree = "<group>";
+		};
 		043E39961C0DE6ED0095ED9D /* TestTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -292,6 +359,28 @@
 				04B4CBCD1C0DA9F4008E9701 /* YBWeiBoUserModel.m */,
 			);
 			path = Tool;
+			sourceTree = "<group>";
+		};
+		044DC7881C196BFB00C8BE75 /* 底部 */ = {
+			isa = PBXGroup;
+			children = (
+				04925F401C195EF700C4AEAF /* YBEmotionGroupView.h */,
+				04925F411C195EF700C4AEAF /* YBEmotionGroupView.m */,
+				044DC7891C196C2C00C8BE75 /* YBEmotionGroupCell.h */,
+				044DC78A1C196C2C00C8BE75 /* YBEmotionGroupCell.m */,
+			);
+			name = "底部";
+			sourceTree = "<group>";
+		};
+		044DC78C1C197B9700C8BE75 /* 上面 */ = {
+			isa = PBXGroup;
+			children = (
+				04925F3D1C195ED500C4AEAF /* YBEmotionView.h */,
+				04925F3E1C195ED500C4AEAF /* YBEmotionView.m */,
+				044DC7931C1980A400C8BE75 /* YBEmotionCell.h */,
+				044DC7941C1980A400C8BE75 /* YBEmotionCell.m */,
+			);
+			name = "上面";
 			sourceTree = "<group>";
 		};
 		0455F3741C0A95290062FA12 /* 欢迎界面 */ = {
@@ -445,9 +534,12 @@
 		04A4AC521C0614CD004058CC /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				04047A321C17080300EA5859 /* FFLabel.swift */,
 				04D248B61C06C178007AF5E0 /* UIScreen */,
 				04D248B01C06C0C2007AF5E0 /* UIColor */,
 				04D248AC1C06C0BB007AF5E0 /* UIView */,
+				04047A311C17080200EA5859 /* weiBoOC-Bridging-Header.h */,
+				04B753551C1A553B00BAD9EE /* YBEmoji.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -569,6 +661,7 @@
 		04D248941C06B48F007AF5E0 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				04047A341C170E1700EA5859 /* webView */,
 				04B4CBA91C0D26DA008E9701 /* PopViewController */,
 				0455F38F1C0B0D2B0062FA12 /* 二维码 */,
 				0472C7971C12BD7F00CCCB51 /* 图片轮播器 */,
@@ -598,7 +691,6 @@
 		04D248971C06B48F007AF5E0 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				04EB99C61C13C697003A3A32 /* 刷新控件 */,
 				04F6F8631C0F206E000A04D2 /* bottomView */,
 				04F6F85B1C0EC98E000A04D2 /* CenterView */,
 				04B4CBD41C0DB3A2008E9701 /* TopCellView */,
@@ -745,6 +837,7 @@
 		04D248A81C06B48F007AF5E0 /* Send */ = {
 			isa = PBXGroup;
 			children = (
+				0437FEE81C185C2800891686 /* 表情键盘 */,
 				04D248A91C06B48F007AF5E0 /* Controller */,
 				04D248AA1C06B48F007AF5E0 /* Model */,
 				04D248AB1C06B48F007AF5E0 /* View */,
@@ -755,6 +848,8 @@
 		04D248A91C06B48F007AF5E0 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				0437FED91C18150B00891686 /* YBSendViewController.h */,
+				0437FEDA1C18150B00891686 /* YBSendViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -762,6 +857,11 @@
 		04D248AA1C06B48F007AF5E0 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				04FF38CA1C1919F100984C90 /* Emoticons.bundle */,
+				04FF38CC1C191A7700984C90 /* YBEmoticonsModel.h */,
+				04FF38CD1C191A7700984C90 /* YBEmoticonsModel.m */,
+				04925F3A1C195AA400C4AEAF /* YBEmoticon.h */,
+				04925F3B1C195AA400C4AEAF /* YBEmoticon.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -769,6 +869,10 @@
 		04D248AB1C06B48F007AF5E0 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				0437FEDF1C1847D700891686 /* YBSendToolBar.h */,
+				0437FEE01C1847D700891686 /* YBSendToolBar.m */,
+				0437FEE51C18489400891686 /* YBSendTextView.h */,
+				0437FEE61C18489400891686 /* YBSendTextView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -845,17 +949,6 @@
 				04DF42F61C08B62F008748B1 /* YBSingleton.h */,
 			);
 			path = "单例";
-			sourceTree = "<group>";
-		};
-		04EB99C61C13C697003A3A32 /* 刷新控件 */ = {
-			isa = PBXGroup;
-			children = (
-				04EB99C71C13C6B7003A3A32 /* YBHomeRefreshControl.h */,
-				04EB99C81C13C6B7003A3A32 /* YBHomeRefreshControl.m */,
-				04EB9A8C1C14793E003A3A32 /* YBHomeLoadMoreView.h */,
-				04EB9A8D1C14793E003A3A32 /* YBHomeLoadMoreView.m */,
-			);
-			name = "刷新控件";
 			sourceTree = "<group>";
 		};
 		04F6F85B1C0EC98E000A04D2 /* CenterView */ = {
@@ -1037,6 +1130,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = YB;
+				LastSwiftUpdateCheck = 0720;
 				LastUpgradeCheck = 0710;
 				ORGANIZATIONNAME = MAC;
 				TargetAttributes = {
@@ -1123,6 +1217,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				04A4ABE21C05FD46004058CC /* Assets.xcassets in Resources */,
+				04FF38CB1C1919F100984C90 /* Emoticons.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1219,6 +1314,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				04D248DB1C06DFFC007AF5E0 /* YBMeController.m in Sources */,
+				04B753561C1A553B00BAD9EE /* YBEmoji.swift in Sources */,
 				04A4ABDA1C05FD46004058CC /* AppDelegate.m in Sources */,
 				04D248CF1C06DF27007AF5E0 /* YBBaseNavigationController.m in Sources */,
 				04D248D81C06DFED007AF5E0 /* YBDiscoverController.m in Sources */,
@@ -1231,8 +1327,11 @@
 				04F6F85E1C0EC9B4000A04D2 /* YBHomeCellCenterView.m in Sources */,
 				04D248DE1C06E932007AF5E0 /* YBVisitView.m in Sources */,
 				04DEBBA21C09C7A000EEADED /* YBLoginView.m in Sources */,
+				04925F3F1C195ED500C4AEAF /* YBEmotionView.m in Sources */,
 				04D248D51C06DFD4007AF5E0 /* YBMessageController.m in Sources */,
+				04925F3C1C195AA400C4AEAF /* YBEmoticon.m in Sources */,
 				0489EEE71C130E54008FDBA6 /* YBHomePictuerDismissAnimatedTransitioning.m in Sources */,
+				044DC78B1C196C2C00C8BE75 /* YBEmotionGroupCell.m in Sources */,
 				0472C79C1C12C49E00CCCB51 /* YBHomePictureViewController.m in Sources */,
 				0449DA2F1C089B0900D1730C /* YBNetworking.m in Sources */,
 				0455F38D1C0AF4800062FA12 /* YBHomeNavTitleView.m in Sources */,
@@ -1243,25 +1342,33 @@
 				04B4CBB51C0D2FC1008E9701 /* YBHomeDismissAnimatedTransitioning.m in Sources */,
 				04B4CBAC1C0D2732008E9701 /* YBHomePopViewController.m in Sources */,
 				04D248BA1C06C1C4007AF5E0 /* UIScreen+Category.m in Sources */,
-				04EB9A8E1C14793E003A3A32 /* YBHomeLoadMoreView.m in Sources */,
+				044DC7951C1980A400C8BE75 /* YBEmotionCell.m in Sources */,
 				04B4CBBB1C0D3314008E9701 /* YBHomePopView.m in Sources */,
-				04EB99C91C13C6B7003A3A32 /* YBHomeRefreshControl.m in Sources */,
 				04B4CBD71C0DB3C6008E9701 /* YBHomeCellTopView.m in Sources */,
 				04D248D21C06DFB7007AF5E0 /* YBHomeController.m in Sources */,
 				04F6F8691C0F3A87000A04D2 /* YBHomeCollectionViewCell.m in Sources */,
 				0455F37F1C0ABFB60062FA12 /* YBIsNewVersion.m in Sources */,
+				0437FEE71C18489400891686 /* YBSendTextView.m in Sources */,
 				0489EEDE1C12CF32008FDBA6 /* YBHomePicturePresentationController.m in Sources */,
 				04D248C81C06DEBB007AF5E0 /* YBTabBarController.m in Sources */,
 				04B4CBD31C0DB397008E9701 /* YBHomeTableViewCell.m in Sources */,
 				04B4CBCE1C0DA9F4008E9701 /* YBWeiBoUserModel.m in Sources */,
+				0437FEE11C1847D700891686 /* YBSendToolBar.m in Sources */,
 				0455F3DE1C0B50C80062FA12 /* YBScanCode.m in Sources */,
+				0437FEEB1C185C7E00891686 /* YBEmotionKeyBoard.m in Sources */,
 				04D248B31C06C0C2007AF5E0 /* UIColor+Category.m in Sources */,
 				04D248CC1C06DF0F007AF5E0 /* YBBaseTableViewController.m in Sources */,
+				04925F421C195EF700C4AEAF /* YBEmotionGroupView.m in Sources */,
+				040A7D721C1B081E002DEEDA /* YBTextAttachment.m in Sources */,
+				04047A371C170E3200EA5859 /* YBHomeWebViewController.m in Sources */,
 				0455F3DD1C0B50C80062FA12 /* YBNavScanCodeController.m in Sources */,
+				04047A331C17080300EA5859 /* FFLabel.swift in Sources */,
 				04F6F8621C0EE119000A04D2 /* YBHomeImageCollectionView.m in Sources */,
 				0455F3781C0A95770062FA12 /* YBNewFeatureCollectionCell.m in Sources */,
+				04FF38CE1C191A7700984C90 /* YBEmoticonsModel.m in Sources */,
 				0449DA2C1C089AF100D1730C /* YBUserModel.m in Sources */,
 				04B4CBAF1C0D2A5D008E9701 /* YBHomePopPresentationController.m in Sources */,
+				0437FEDB1C18150B00891686 /* YBSendViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1469,6 +1576,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/weiBoOC/Lib/ShareSDK/Connection",
@@ -1489,6 +1597,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = weiBoOC.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "weiBoOC/Extension/weiBoOC-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -1498,6 +1608,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/weiBoOC/Lib/ShareSDK/Connection",
@@ -1518,6 +1629,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = weiBoOC.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "weiBoOC/Extension/weiBoOC-Bridging-Header.h";
 			};
 			name = Release;
 		};

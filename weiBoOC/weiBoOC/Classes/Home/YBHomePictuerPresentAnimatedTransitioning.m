@@ -37,6 +37,7 @@
     [self.imageView sd_setImageWithURL:[NSURL URLWithString:dataModel.pic_urls[dataModel.index]]];
     self.imageView.frame = CGRectFromString(toVC.dataModel.imageFrames[toVC.dataModel.index]);
     [[transitionContext containerView] addSubview:self.imageView];
+    [[transitionContext containerView] sendSubviewToBack:self.imageView];
     // 动画
     // 计算大小
     CGSize imageSize = self.imageView.image.size;
@@ -45,9 +46,9 @@
     CGFloat imageHei = [UIScreen width] * (imageSize.height / imageSize.width);
     CGFloat imageY = ([UIScreen height] - imageHei) * 0.5;
     [UIView animateWithDuration:0.5 animations:^{
+        [transitionContext containerView].backgroundColor = [UIColor colorWithWhite:0 alpha:1];
         self.imageView.frame = CGRectMake(imageX, imageY, iamgeWid, imageHei);
     } completion:^(BOOL finished) {
-        [self.imageView removeFromSuperview];
         toView.hidden = NO;
         [transitionContext completeTransition:YES];
     }];

@@ -41,12 +41,23 @@
     // 加载数据
     __weak typeof(self) weakSelf = self;
     [self.imageView sd_setImageWithURL:imageURL completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
-        // 图片大小
-        CGSize imageSize = image.size;
-        // 设置图片试图大小
-        CGFloat imageHeight = [UIScreen width] * (imageSize.height / imageSize.width);
-        weakSelf.imageView.frame = CGRectMake(0, 0, [UIScreen width], imageHeight);
-        weakSelf.scrollView.contentInset = UIEdgeInsetsMake(([UIScreen height] - imageHeight) * 0.5, 0, 0, 0);
+        // 判断图片是否加载成功
+        if (image != nil && error == nil) {
+            // 图片大小
+            CGSize imageSize = image.size;
+            // 设置图片试图大小
+            CGFloat imageHeight = [UIScreen width] * (imageSize.height / imageSize.width);
+            weakSelf.imageView.frame = CGRectMake(0, 0, [UIScreen width], imageHeight);
+            weakSelf.scrollView.contentInset = UIEdgeInsetsMake(([UIScreen height] - imageHeight) * 0.5, 0, 0, 0);
+            // 设置位置
+            if (weakSelf.imageView.height > [UIScreen height]) {
+                weakSelf.scrollView.contentOffset = CGPointMake(0, 0);
+                [weakSelf scrollViewDidZoom:weakSelf.scrollView];
+                weakSelf.scrollView.contentSize = weakSelf.imageView.size;
+            }
+        } else {
+        
+        }
     }];
 }
 
@@ -93,7 +104,6 @@
         scrollView.maximumZoomScale = 2;
         scrollView.delegate = self;
         [self.contentView addSubview:scrollView];
-        scrollView.backgroundColor = YBRandamColor
         _scrollView = scrollView;
     }
     return _scrollView;

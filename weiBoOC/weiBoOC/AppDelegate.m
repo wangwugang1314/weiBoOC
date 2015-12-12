@@ -12,6 +12,8 @@
 #import "YBNewFeatureViewController.h"
 #import "YBIsNewVersion.h"
 #import "YBUserModel.h"
+#import "YBSendViewController.h"
+#import "YBEmoticonsModel.h"
 
 @interface AppDelegate ()
 
@@ -28,7 +30,8 @@
     // 创建window
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen bounds]];
     // 开始界面跳转
-    [self startViewChange];
+//    [self startViewChange];
+    self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController: [YBSendViewController new]];
     // 显示
     [self.window makeKeyAndVisible];
     // 设置背景颜色
@@ -81,8 +84,6 @@
 - (void)setGlobalProperty {
     // barButtonItem
     UIBarButtonItem *barButtonItem = [UIBarButtonItem appearance];
-    NSDictionary *dic = @{NSForegroundColorAttributeName:[UIColor orangeColor]};
-    [barButtonItem setTitleTextAttributes:dic forState:UIControlStateNormal];
     barButtonItem.tintColor = [UIColor orangeColor];
 }
 

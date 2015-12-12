@@ -22,6 +22,12 @@
 }
 
 - (void)animateTransition:(id <UIViewControllerContextTransitioning>)transitionContext{
+    // 移除图片
+    for (UIView *view in [transitionContext containerView].subviews) {
+        if ([view isKindOfClass:[UIImageView class]]) {
+            [view removeFromSuperview];
+        }
+    }
     // 获取当前进控制器
     YBHomePictureViewController *formVC = [transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
     YBHomePictureCell *cell = (YBHomePictureCell *)[[formVC.collectionView visibleCells] lastObject];
@@ -37,6 +43,7 @@
     // 设置动画
     [UIView animateWithDuration:0.5 animations:^{
         formVC.view.alpha = 0;
+        [transitionContext containerView].backgroundColor = [UIColor colorWithWhite:0 alpha:0];
         imageView.frame = CGRectFromString(formVC.dataModel.imageFrames[formVC.dataModel.index]);
     } completion:^(BOOL finished) {
         [transitionContext completeTransition:YES];

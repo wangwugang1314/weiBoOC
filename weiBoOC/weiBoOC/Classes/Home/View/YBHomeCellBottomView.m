@@ -26,7 +26,7 @@
     if (self = [super initWithFrame:frame]) {
         // 准备UI
         [self prepareUI];
-        self.backgroundColor = [UIColor purpleColor];
+        self.backgroundColor = [UIColor lightGrayColor];
     }
     return self;
 }

@@ -52,7 +52,7 @@
     // 转发微薄的文本
     YBWeiBoDataModel *switchWeiBo = dataModel.retweeted_status;
     
-    self.backgroundColor = switchWeiBo == nil ? [UIColor orangeColor] : [UIColor blueColor];
+    self.backgroundColor = switchWeiBo == nil ? [UIColor whiteColor] : [UIColor colorWithWhite:0 alpha:0.1];
     
     if (switchWeiBo != nil) { // 转发微薄
         // 发数据
@@ -134,7 +134,6 @@
         UILabel *view = [UILabel new];
         [self addSubview:view];
         view.textColor = [UIColor colorWithWhite:0 alpha:0.7];
-        view.backgroundColor = [UIColor redColor];
         view.font = [UIFont systemFontOfSize:16];
         view.numberOfLines = 0;
         _textView = view;

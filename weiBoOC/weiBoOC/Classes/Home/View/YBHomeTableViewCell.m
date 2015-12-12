@@ -11,13 +11,14 @@
 #import "YBWeiBoDataModel.h"
 #import "YBHomeCellCenterView.h"
 #import "YBHomeCellBottomView.h"
+#import "weiBoOC-swift.h"
 
-@interface YBHomeTableViewCell ()
+@interface YBHomeTableViewCell () <FFLabelDelegate>
 
 /// 顶部试图
 @property(nonatomic, weak) YBHomeCellTopView *topView;
 /// 微薄文本内容
-@property(nonatomic, weak) UILabel *textView;
+@property(nonatomic, weak) FFLabel *textView;
 /// 中间试图
 @property(nonatomic, weak) YBHomeCellCenterView *centerView;
 /// 底部视图
@@ -93,12 +94,12 @@
 }
 
 /// 微薄文本内容
-- (UILabel *)textView {
+- (FFLabel *)textView {
     if (_textView == nil) {
-        UILabel *view = [UILabel new];
+        FFLabel *view = [FFLabel new];
         view.numberOfLines = 0;
         [self.contentView addSubview:view];
-        view.backgroundColor = [UIColor grayColor];
+        view.labelDelegate = self;
         _textView = view;
     }
     return _textView;
@@ -109,7 +110,6 @@
     if (_centerView == nil) {
         YBHomeCellCenterView *view = [YBHomeCellCenterView new];
         [self.contentView addSubview:view];
-        view.backgroundColor = [UIColor grayColor];
         _centerView = view;
     }
     return _centerView;
@@ -125,4 +125,16 @@
     return _bottomView;
 }
 
+#pragma mark - 代理
+/// 链接点击代理
+- (void)labelDidSelectedLinkText:(FFLabel *)label text:(NSString *)text {
+    if (![text hasPrefix:@"http"]) {
+        return;
+    }
+    if([self.ybDelegate respondsToSelector:@selector(homeTableViewCell:andPathStr:)]) {
+        [self.ybDelegate homeTableViewCell:self andPathStr:text];
+    }
+}
+
 @end
+

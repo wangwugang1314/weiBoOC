@@ -34,7 +34,6 @@
     if (self = [super initWithFrame:frame]) {
         // 准备UI
         [self prepareUI];
-        self.backgroundColor = [UIColor purpleColor];
     }
     return self;
 }
@@ -149,7 +148,7 @@
 - (UILabel *)dateView{
     if (_dateView == nil) {
         UILabel *lable = [UILabel new];
-        lable.textColor = [UIColor lightGrayColor];
+        lable.textColor = [UIColor grayColor];
         lable.font = [UIFont systemFontOfSize:12];
         [self addSubview:lable];
         _dateView = lable;
@@ -161,7 +160,7 @@
 - (UILabel *)sourceView{
     if (_sourceView == nil) {
         UILabel *lable = [UILabel new];
-        lable.textColor = [UIColor lightGrayColor];
+        lable.textColor = [UIColor grayColor];
         lable.font = [UIFont systemFontOfSize:12];
         [self addSubview:lable];
         _sourceView = lable;

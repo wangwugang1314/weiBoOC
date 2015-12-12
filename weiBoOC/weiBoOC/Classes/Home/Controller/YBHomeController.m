@@ -17,34 +17,27 @@
 #import "YBHomeTableViewCell.h"
 #import "YBHomeImageCollectionView.h"
 #import "YBHomePictureViewController.h"
-#import "YBHomeRefreshControl.h"
-#import "YBHomeLoadMoreView.h"
+#import "MJRefresh.h"
+#import "YBHomeWebViewController.h"
 
 /// 数据加载类型
 typedef NS_ENUM(NSInteger, YBHomeLoadWeiBoDataStyle) {
-    YBHomeLoadWeiBoDataStyleOne,    // 向下
-    YBHomeLoadWeiBoDataStyleNew,    // 向上
-    YBHomeLoadWeiBoDataStyleOld     // 动画
+    YBHomeLoadWeiBoDataStyleNew,    // 下拉
+    YBHomeLoadWeiBoDataStyleOld     // 上拉
 };
 
-@interface YBHomeController () <UIViewControllerTransitioningDelegate>
+@interface YBHomeController () <UIViewControllerTransitioningDelegate, YBHomeTableViewCellDelegate>
 
 /// 导航栏中间按钮
 @property(nonatomic, weak) YBHomeNavTitleView *titleView;
 /// 微薄数据
 @property(nonatomic, strong) NSMutableArray *dataArr;
-/// 刷新控件
-@property(nonatomic, weak) YBHomeRefreshControl *refreshC;
 /// 标记拖拽
 @property(nonatomic, assign) BOOL isDraggingTag;
-/// 是否正在加载数据
-@property(nonatomic, assign) BOOL isLoadData;
 /// 显示更新微博数
 @property(nonatomic, weak) UILabel *showWeiBoNum;
 /// 标记是否正在动画
 @property(nonatomic, assign) BOOL isAnimation;
-/// 页脚（上拉更多）
-@property(nonatomic, weak) YBHomeLoadMoreView *loadMoreView;
 
 @end
 
@@ -57,8 +50,6 @@ typedef NS_ENUM(NSInteger, YBHomeLoadWeiBoDataStyle) {
     if(![YBUserModel userModel].isLogin) return;
     // 注册Cell
     [self.tableView registerClass:[YBHomeTableViewCell class] forCellReuseIdentifier:@"YBHomeTableViewCell"];
-    // 获取数据
-    [self getWeiBoData:YBHomeLoadWeiBoDataStyleOne];
     // 准备UI
     [self prepareUI];
     // 注册通知
@@ -67,32 +58,26 @@ typedef NS_ENUM(NSInteger, YBHomeLoadWeiBoDataStyle) {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(homeImageCollectionViewNotification:) name:YBHomeImageCollectionViewNotification object:nil];
     
     self.tableView.estimatedRowHeight = 300;
-    // 刷新控件
-    self.refreshControl = [[YBHomeRefreshControl alloc] init];
-    self.refreshC = (YBHomeRefreshControl *)self.refreshControl;
-    // 页脚
-    YBHomeLoadMoreView *loadMoreView = [YBHomeLoadMoreView new];
-    self.tableView.tableFooterView = loadMoreView;
-    self.loadMoreView = loadMoreView;
+    // 准备刷新控件
+    [self setReloadData];
+    // 获取数据
+    [self.tableView.mj_header beginRefreshing];
+    // 取消每行之间的横线
+    self.tableView.separatorStyle = UITableViewCellSelectionStyleNone;
 }
 
 #pragma mark - 内存警告
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    NSLog(@"888888");
 }
 
 #pragma mark - 获取微薄数据
 - (void)getWeiBoData:(YBHomeLoadWeiBoDataStyle)loadWeiBoDataStyle {
-    if (self.isLoadData) {
-        return;
-    }
-    // 标记正在加载数据
-    self.isLoadData = YES;
+    // 如果正在加载数据直接返回
     NSInteger newId = 0;
     NSInteger OldId = 0;
     // 判断当前加载类型
-    if (loadWeiBoDataStyle == YBHomeLoadWeiBoDataStyleNew) {
+    if (loadWeiBoDataStyle == YBHomeLoadWeiBoDataStyleNew && self.dataArr != nil) {
         YBWeiBoDataModel *daraModel = self.dataArr[0];
         newId = daraModel.id;
     }else if(loadWeiBoDataStyle == YBHomeLoadWeiBoDataStyleOld) {
@@ -102,10 +87,15 @@ typedef NS_ENUM(NSInteger, YBHomeLoadWeiBoDataStyle) {
     
     __weak typeof(self) selfVc = self;
     [YBWeiBoDataModel loadWeiBoDataModelWithNewId:newId andOldId:OldId andFinish:^(NSArray *weiMoModels, BOOL isError) {
+        // 结束刷新
+        // 判断当前加载类型
+        if (loadWeiBoDataStyle == YBHomeLoadWeiBoDataStyleNew) {
+            [selfVc.tableView.mj_header endRefreshing];
+        }else if(loadWeiBoDataStyle == YBHomeLoadWeiBoDataStyleOld) {
+            [selfVc.tableView.mj_footer endRefreshing];
+        }
         
-        selfVc.isLoadData = NO;
         // 标记加载完成
-        [selfVc.refreshC endRefreshing];
         if (!isError) { // 网络加载成功
             if(weiMoModels.count){ // 加载到数据
                 if (self.dataArr.count == 0) { // 第一次加载
@@ -123,7 +113,7 @@ typedef NS_ENUM(NSInteger, YBHomeLoadWeiBoDataStyle) {
             }else{ // 没有新数据
                 selfVc.showWeiBoNum.text = [NSString stringWithFormat:@"没有新微薄"];
             }
-            if (!selfVc.isAnimation) {
+            if (!selfVc.isAnimation && loadWeiBoDataStyle == YBHomeLoadWeiBoDataStyleNew) {
                 selfVc.isAnimation = YES;
                 // 设置加载显示说句
                 [UIView animateWithDuration:0.4 animations:^{
@@ -158,10 +148,23 @@ typedef NS_ENUM(NSInteger, YBHomeLoadWeiBoDataStyle) {
     [titleView addTarget:self action:@selector(titleViewClick:) forControlEvents:UIControlEventTouchUpInside];
 }
 
+/// 设置刷新
+- (void)setReloadData{
+    // 下拉刷新
+    __weak typeof(self) weakSelf = self;
+    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        [weakSelf getWeiBoData:YBHomeLoadWeiBoDataStyleNew];
+    }];
+    // 上拉更多
+    self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+        [weakSelf getWeiBoData:YBHomeLoadWeiBoDataStyleOld];
+    }];
+}
+
 #pragma mark - 按钮点击事件
 /// 导航栏左边按钮点击
 - (void)leftBarButtonItemClick{
-    [self.refreshC endRefreshing];
+    
     YBLog(@"导航栏左边按钮点击%s",__FUNCTION__);
 }
 
@@ -196,41 +199,6 @@ typedef NS_ENUM(NSInteger, YBHomeLoadWeiBoDataStyle) {
     [self presentViewController:vc animated:YES completion:nil];
 }
 
-#pragma mark - scrollView代理
-/// 停止拖拽的时候调用
-- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
-    self.isDraggingTag = NO;
-    // 如果停止拖拽的时候小于60 如果开始就关闭
-    if (scrollView.contentOffset.y > -123 && self.refreshC.isRefreshing) {
-        [UIView animateWithDuration:0.25 animations:^{
-            scrollView.contentOffset = CGPointMake(0, -64);
-        } completion:^(BOOL finished) {
-            self.refreshC.refreshControlSta = YBHomeRefreshControlStateDown;
-            [self.refreshC endRefreshing];
-        }];
-    }else if (scrollView.contentOffset.y <= -123) {
-        self.refreshC.refreshControlSta = YBHomeRefreshControlStateAnimate;
-        [self.refreshC beginRefreshing];
-        if (!self.isLoadData) {
-            [self getWeiBoData:YBHomeLoadWeiBoDataStyleNew];
-        }
-    }
-}
-
-/// 拖拽调用
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    // 如果正在高度大于60，并且没有标记
-    if (scrollView.contentOffset.y < -123 && !self.isDraggingTag && !self.refreshC.isRefreshing) {
-        self.isDraggingTag = !self.isDraggingTag;
-        // 向上
-        self.refreshC.refreshControlSta = YBHomeRefreshControlStateUp;
-    }else if (scrollView.contentOffset.y >= -123 && self.isDraggingTag && !self.refreshC.isRefreshing) {
-        self.isDraggingTag = !self.isDraggingTag;
-        // 向下
-        self.refreshC.refreshControlSta = YBHomeRefreshControlStateDown;
-    }
-}
-
 #pragma mark - 数据源代理
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.dataArr.count;
@@ -238,14 +206,17 @@ typedef NS_ENUM(NSInteger, YBHomeLoadWeiBoDataStyle) {
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     YBHomeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"YBHomeTableViewCell"];
-    // 如果当前行是最后一行就加载数据
-    if(indexPath.row == self.dataArr.count - 1) {
-        // 加载更多数据
-        [self getWeiBoData:YBHomeLoadWeiBoDataStyleOld];
-    }
     // 设置数据
     cell.dataModel = self.dataArr[indexPath.row];
+    // 设置cell代理
+    cell.ybDelegate = self;
     return cell;
+}
+
+#pragma mark - cell代理
+- (void)homeTableViewCell:(YBHomeTableViewCell *)cell andPathStr:(NSString *)pathStr {
+    UINavigationController *naV = [[UINavigationController alloc] initWithRootViewController:[[YBHomeWebViewController alloc] initWithPathName:pathStr]];
+    [self presentViewController:naV animated:YES completion:nil];
 }
 
 #pragma mark - tableView代理
