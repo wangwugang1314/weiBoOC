@@ -30,8 +30,8 @@
     // 创建window
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen bounds]];
     // 开始界面跳转
-//    [self startViewChange];
-    self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController: [YBSendViewController new]];
+    [self startViewChange];
+//    self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController: [YBSendViewController new]];
     // 显示
     [self.window makeKeyAndVisible];
     // 设置背景颜色

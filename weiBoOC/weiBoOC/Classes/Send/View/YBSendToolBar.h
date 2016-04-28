@@ -13,7 +13,8 @@
 typedef NS_ENUM(NSUInteger, YBSendToolBarButClickStyle) {
     YBSendToolBarButClickStyleNone,     // 什么也没有
     YBSendToolBarButClickStyleEmotion,  // 表情键盘
-    YBSendToolBarButClickStyleKeyboard  // 正常键盘
+    YBSendToolBarButClickStyleKeyboard, // 正常键盘
+    YBSendToolBarButClickStylePictuer   // 图片
 };
 
 @protocol YBSendToolBarDelegate <NSObject>

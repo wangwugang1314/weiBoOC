@@ -12,6 +12,8 @@
 #import "YBHomeCellCenterView.h"
 #import "YBHomeCellBottomView.h"
 #import "weiBoOC-swift.h"
+#import "YBEmoticonsModel.h"
+#import "YBEmoticon.h"
 
 @interface YBHomeTableViewCell () <FFLabelDelegate>
 
@@ -72,8 +74,42 @@
     _dataModel = dataModel;
     // 顶部试图
     self.topView.dataModel = dataModel;
-    // 微薄内容
-    self.textView.text = dataModel.text;
+
+    NSMutableString *text = [NSMutableString stringWithString:dataModel.text];
+    
+    NSString *pattern = @"\\[.*?\\]";
+    NSRegularExpression *regularExpression = [NSRegularExpression regularExpressionWithPattern:pattern options:0 error:nil];
+    NSArray *textCheckingResults = [regularExpression matchesInString:dataModel.text options:NSMatchingReportCompletion range:NSMakeRange(0, dataModel.text.length)];
+    // 属性字符串
+    NSMutableAttributedString *mAttStr = [[NSMutableAttributedString alloc] initWithString:text];
+    // 遍历
+    for(int i = (int)textCheckingResults.count - 1; i >= 0; i--) {
+        // NSRange
+        NSTextCheckingResult *textCheckingResult = textCheckingResults[i];
+        NSRange range = [textCheckingResult rangeAtIndex:0];
+        // 获取文字
+        NSString *rangeStr = [text substringWithRange:range];
+        // 遍历表情字典
+        for (YBEmoticonsModel *emotionModel in [YBEmoticonsModel emoticonsModels]) {
+            // 遍历表情
+            for (YBEmoticon *emotion in emotionModel.emotions) {
+                // 判断是否相等
+                if ([rangeStr isEqualToString:emotion.chs]) {
+                    // 设置附件
+                    NSTextAttachment *textAttachment = [NSTextAttachment new];
+                    textAttachment.image = [UIImage imageWithContentsOfFile:emotion.png];
+                    textAttachment.bounds = CGRectMake(-3, -3, 18, 18);
+                    NSAttributedString *attStr = [NSAttributedString attributedStringWithAttachment:textAttachment];
+                    // 插入指定位置属性字符串
+                    [mAttStr replaceCharactersInRange:range withAttributedString:attStr];
+                }
+            }
+        }
+    }
+    [mAttStr addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:18] range:NSMakeRange(0, mAttStr.length)];
+    self.textView.attributedText = mAttStr;
+    
+    
     [self.textView sizeToFit];
     // 中间试图
     self.centerView.dataModel = self.dataModel;

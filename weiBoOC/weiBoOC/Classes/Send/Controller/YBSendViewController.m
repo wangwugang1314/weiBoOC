@@ -14,13 +14,18 @@
 #import "YBEmoticon.h"
 #import "YBTextAttachment.h"
 #import "weiBoOC-swift.h"
+#import "YBNetworking.h"
+#import "UIImage+Category.h"
+#import "YBSendImageView.h"
 
-@interface YBSendViewController () <YBSendToolBarDelegate, YBEmotionKeyBoardDelegate>
+@interface YBSendViewController () <YBSendToolBarDelegate, YBEmotionKeyBoardDelegate,UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 
 /// textView
 @property(nonatomic, weak) YBSendTextView *textView;
 /// toolBar
 @property(nonatomic, weak) YBSendToolBar *toolBar;
+/// 当前点击图片索引
+@property(nonatomic, strong) NSNumber *index;
 
 @end
 
@@ -41,14 +46,34 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textViewTextDidChangeNotification) name:UITextViewTextDidChangeNotification object:nil];
     // 通知（监听键盘frame变化）
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillChangeFrameNotification:) name:UIKeyboardWillChangeFrameNotification object:nil];
+    // 通知展现相册
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sendImageViewPresentPickerViewNotification:) name:@"YBSendImageViewPresentPickerViewNotification" object:nil];
 }
 
-/// 通知
+/// 通知文字内容改变
 - (void)textViewTextDidChangeNotification {
     self.navigationItem.rightBarButtonItem.enabled = self.textView.text.length;
 }
 
-/// 通知
+/// 展现相册
+- (void)sendImageViewPresentPickerViewNotification:(NSNotification *)notification {
+    self.index = notification.userInfo[@"index"];
+    // 判断相册是否可用
+    if(![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeSavedPhotosAlbum]) {
+        // 不可用直接返回
+        [SVProgressHUD showErrorWithStatus:@"相册不可用"];
+        return;
+    }
+    UIImagePickerController *pc = [[UIImagePickerController alloc] init];
+    // 设置来源
+    pc.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
+    // 设置代理
+    pc.delegate = self;
+    // 展现
+    [self presentViewController:pc animated:YES completion:nil];
+}
+
+/// 通知键盘frame改变
 - (void)keyboardWillChangeFrameNotification:(NSNotification *)notification {
     // 获取动画时间
     CGFloat animTime = [notification.userInfo[UIKeyboardAnimationDurationUserInfoKey] floatValue];
@@ -90,12 +115,36 @@
 #pragma mark - 按钮点击事件
 /// 导航栏左边按钮点击
 - (void)leftBarButtonItemClick{
+    [self.textView resignFirstResponder];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-/// 导航栏右边按钮点击
+/// 导航栏右边按钮点击(发微博)
 - (void)rightBarButtonItemClick{
-    YBLog(@"rightBarButtonItemClick")
+    // 文本
+    __block NSString *text = @"";
+    // 遍历属性
+    __weak typeof(self) weakSelf = self;
+    [self.textView.attributedText enumerateAttributesInRange:NSMakeRange(0, self.textView.attributedText.string.length) options:0 usingBlock:^(NSDictionary<NSString *,id> * _Nonnull attrs, NSRange range, BOOL * _Nonnull stop) {
+        if (attrs[@"NSAttachment"] != nil) { // 有附件
+            // 获取附件
+            YBTextAttachment *textAttachment = attrs[@"NSAttachment"];
+            text = [NSString stringWithFormat:@"%@%@",text, textAttachment.stringName];
+        }else{ // 没有附件
+            text = [NSString stringWithFormat:@"%@%@",text, [weakSelf.textView.attributedText.string substringWithRange:range]];
+        }
+    }];
+    // 如果有图片就发送有图片的微博
+    NSArray *arr = self.textView.imageCollectionView.dataArr;
+    UIImage *image = arr.count > 1 ? arr[0] : nil;
+    
+    [YBNetworking sendWeiBoWithText:text image:image andFinish:^(BOOL success) {
+        if (success) { // 成功
+            [SVProgressHUD showSuccessWithStatus:@"发送成功"];
+        }else{ // 失败
+            [SVProgressHUD showErrorWithStatus:@"发送失败"];
+        }
+    }];
 }
 
 #pragma mark - ToolBarDelegate
@@ -114,8 +163,21 @@
             self.textView.inputView = nil;
             [self.textView becomeFirstResponder];
             break;
+        case YBSendToolBarButClickStylePictuer:
+            // 通知要加载图片
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"YBSendToolBarButClickStylePictuerNotification" object:nil];
+            break;
         default: break;
     }
+}
+
+#pragma mark - 相册图片点击代理
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingImage:(UIImage *)image editingInfo:(NSDictionary<NSString *,id> *)editingInfo {
+    UIImage *minImage = [image minImageWithMaxWith:300 andMaxHeight:300];
+    // 通知
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"YBImagePickerControllerDidFinishNotification" object:nil userInfo:@{@"index":self.index, @"image": minImage}];
+    // 退出
+    [picker dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark - 表情键盘代理
@@ -138,8 +200,6 @@
         // 设置附件大小
         CGFloat textAttachmentSize = self.textView.font.lineHeight;
         
-        YBLog(@"%f", textAttachmentSize)
-        
         // 设置附件大小
         textAttachment.bounds = CGRectMake(0, -(textAttachmentSize * 0.2), textAttachmentSize, textAttachmentSize);
         // 创建属性字符串
@@ -156,6 +216,7 @@
         self.textView.attributedText = oldAttributedString;
         // 手动发送代理
         [self.textView textViewDidChange:self.textView];
+        [self textViewTextDidChangeNotification];
     }
 }
 

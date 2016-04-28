@@ -5,6 +5,7 @@
 #import "YBEmotionGroupView.h"
 #import "YBEmoticonsModel.h"
 #import "YBEmotionView.h"
+#import "YBEmoticon.h"
 
 @interface YBEmotionKeyBoard () <YBEmotionGroupViewDelegate, YBEmotionViewDelegate>
 
@@ -104,6 +105,10 @@ YBSingleton_m(EmotionKeyBoard)
 
 /// 点击表情代理
 - (void)emotionView:(YBEmotionView *)emotionView didSelectAndEmotionModel:(YBEmoticon *)emotionModel {
+    // 如果是空直接返回
+    if(emotionModel.png == nil && emotionModel.code == nil && emotionModel.deletex == nil) {
+        return;
+    }
     if ([self.ybDelegate respondsToSelector:@selector(emotionKeyBoard:didSelectAndEmotionModel:)]) {
         [self.ybDelegate emotionKeyBoard:self didSelectAndEmotionModel:emotionModel];
     }

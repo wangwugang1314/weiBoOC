@@ -7,6 +7,7 @@
 //
 
 #import "YBSendTextView.h"
+#import "YBSendImageView.h"
 
 @interface YBSendTextView () <UITextViewDelegate>
 
@@ -37,6 +38,14 @@
     [self.placeholderView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(self.mas_top).offset(9);
         make.left.mas_equalTo(self.mas_left).offset(5);
+    }];
+    // 图片视图
+    CGFloat wid = ([UIScreen width] - 40) / 3 * 2 + 10;
+    [self.imageCollectionView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(self.mas_top).offset(150);
+        make.left.mas_equalTo(self.mas_left).offset(10);
+        make.width.mas_equalTo(self.mas_width).offset(-20);
+        make.height.mas_equalTo(wid);
     }];
 }
 
@@ -71,6 +80,16 @@
         _placeholderView = lable;
     }
     return _placeholderView;
+}
+
+/// 图片视图
+- (YBSendImageView *)imageCollectionView {
+    if (!_imageCollectionView) {
+        YBSendImageView *view = [YBSendImageView new];
+        [self addSubview:view];
+        _imageCollectionView = view;
+    }
+    return _imageCollectionView;
 }
 
 @end

@@ -99,21 +99,13 @@
     
     // 加1
     emoticon.num++;
-    // 如果是最后最近直接返回
-    if(indexPath.section == 0) {
-        return;
-    }
     
     // 获取最近
     YBEmoticonsModel *latelyModel = self.dataArr[0];
     
     // 判断是组里面是否有
-    BOOL isEq = NO;
-    for (YBEmoticon *emo in latelyModel.emotions) {
-        if (emo == emoticon) {
-            isEq = YES;
-        }
-    }
+    BOOL isEq = [latelyModel.emotions containsObject:emoticon];
+
     YBEmoticon *delModel;
     // 如果相等不添加数据
     if (!isEq) {
@@ -137,8 +129,11 @@
         [latelyModel.emotions removeLastObject];
     }
     
-    // 更新数据
-    [self reloadData];
+    // 如果是最近不更新数据
+    if(indexPath.section != 0) {
+        // 更新数据
+        [self reloadData];
+    }
 }
 
 /// 停止滚动的时候调用

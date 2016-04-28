@@ -8,7 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
+/// 获取数据完成
 typedef void (^networkFinish)(id success, NSError *error);
+/// 发微博完成
+typedef void (^sendFinish)(BOOL success);
 
 @interface YBNetworking : NSObject
 
@@ -27,5 +30,7 @@ YBSingleton_h(userModel)
 + (void)loadUserDataWithFinish:(networkFinish)finish;
 /// 加载微薄数据
 + (void)loadWeiBoDataWithNewId:(NSInteger)since_id andOld:(NSInteger)max_id andFinish:(networkFinish)finish;
+/// 发微博
++ (void)sendWeiBoWithText:(NSString *)text image:(UIImage *)image andFinish:(sendFinish)finish;
 
 @end

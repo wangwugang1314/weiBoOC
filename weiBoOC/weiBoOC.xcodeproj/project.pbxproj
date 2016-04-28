@@ -39,6 +39,9 @@
 		04A4ABE21C05FD46004058CC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04A4ABE11C05FD46004058CC /* Assets.xcassets */; };
 		04A4ABF01C05FD46004058CC /* weiBoOCTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A4ABEF1C05FD46004058CC /* weiBoOCTests.m */; };
 		04A4ABFB1C05FD46004058CC /* weiBoOCUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A4ABFA1C05FD46004058CC /* weiBoOCUITests.m */; };
+		04AE7CCA1C1D717E00511540 /* UIImage+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 04AE7CC91C1D717E00511540 /* UIImage+Category.m */; };
+		04B3B2061C1D536D001A337B /* YBSendImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B3B2051C1D536D001A337B /* YBSendImageView.m */; };
+		04B3B2091C1D5381001A337B /* YBSendImageViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B3B2081C1D5381001A337B /* YBSendImageViewCell.m */; };
 		04B4CBAC1C0D2732008E9701 /* YBHomePopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B4CBAB1C0D2732008E9701 /* YBHomePopViewController.m */; };
 		04B4CBAF1C0D2A5D008E9701 /* YBHomePopPresentationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B4CBAE1C0D2A5D008E9701 /* YBHomePopPresentationController.m */; };
 		04B4CBB21C0D2CA2008E9701 /* YBHomePresentAnimatedTransitioning.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B4CBB11C0D2CA2008E9701 /* YBHomePresentAnimatedTransitioning.m */; };
@@ -186,6 +189,12 @@
 		04A4ABF61C05FD46004058CC /* weiBoOCUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = weiBoOCUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		04A4ABFA1C05FD46004058CC /* weiBoOCUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = weiBoOCUITests.m; sourceTree = "<group>"; };
 		04A4ABFC1C05FD46004058CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		04AE7CC81C1D717E00511540 /* UIImage+Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Category.h"; sourceTree = "<group>"; };
+		04AE7CC91C1D717E00511540 /* UIImage+Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Category.m"; sourceTree = "<group>"; };
+		04B3B2041C1D536D001A337B /* YBSendImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YBSendImageView.h; sourceTree = "<group>"; };
+		04B3B2051C1D536D001A337B /* YBSendImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YBSendImageView.m; sourceTree = "<group>"; };
+		04B3B2071C1D5381001A337B /* YBSendImageViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YBSendImageViewCell.h; sourceTree = "<group>"; };
+		04B3B2081C1D5381001A337B /* YBSendImageViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YBSendImageViewCell.m; sourceTree = "<group>"; };
 		04B4CBAA1C0D2732008E9701 /* YBHomePopViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YBHomePopViewController.h; sourceTree = "<group>"; };
 		04B4CBAB1C0D2732008E9701 /* YBHomePopViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YBHomePopViewController.m; sourceTree = "<group>"; };
 		04B4CBAD1C0D2A5D008E9701 /* YBHomePopPresentationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YBHomePopPresentationController.h; sourceTree = "<group>"; };
@@ -534,6 +543,8 @@
 		04A4AC521C0614CD004058CC /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				04AE7CC81C1D717E00511540 /* UIImage+Category.h */,
+				04AE7CC91C1D717E00511540 /* UIImage+Category.m */,
 				04047A321C17080300EA5859 /* FFLabel.swift */,
 				04D248B61C06C178007AF5E0 /* UIScreen */,
 				04D248B01C06C0C2007AF5E0 /* UIColor */,
@@ -873,6 +884,10 @@
 				0437FEE01C1847D700891686 /* YBSendToolBar.m */,
 				0437FEE51C18489400891686 /* YBSendTextView.h */,
 				0437FEE61C18489400891686 /* YBSendTextView.m */,
+				04B3B2041C1D536D001A337B /* YBSendImageView.h */,
+				04B3B2051C1D536D001A337B /* YBSendImageView.m */,
+				04B3B2071C1D5381001A337B /* YBSendImageViewCell.h */,
+				04B3B2081C1D5381001A337B /* YBSendImageViewCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1339,6 +1354,7 @@
 				04D8DA151C09FC6D0066452E /* YBNewFeatureViewController.m in Sources */,
 				04F6F8661C0F2090000A04D2 /* YBHomeCellBottomView.m in Sources */,
 				0489EEE11C12CFA7008FDBA6 /* YBHomePictuerPresentAnimatedTransitioning.m in Sources */,
+				04B3B2061C1D536D001A337B /* YBSendImageView.m in Sources */,
 				04B4CBB51C0D2FC1008E9701 /* YBHomeDismissAnimatedTransitioning.m in Sources */,
 				04B4CBAC1C0D2732008E9701 /* YBHomePopViewController.m in Sources */,
 				04D248BA1C06C1C4007AF5E0 /* UIScreen+Category.m in Sources */,
@@ -1357,6 +1373,7 @@
 				0455F3DE1C0B50C80062FA12 /* YBScanCode.m in Sources */,
 				0437FEEB1C185C7E00891686 /* YBEmotionKeyBoard.m in Sources */,
 				04D248B31C06C0C2007AF5E0 /* UIColor+Category.m in Sources */,
+				04AE7CCA1C1D717E00511540 /* UIImage+Category.m in Sources */,
 				04D248CC1C06DF0F007AF5E0 /* YBBaseTableViewController.m in Sources */,
 				04925F421C195EF700C4AEAF /* YBEmotionGroupView.m in Sources */,
 				040A7D721C1B081E002DEEDA /* YBTextAttachment.m in Sources */,
@@ -1369,6 +1386,7 @@
 				0449DA2C1C089AF100D1730C /* YBUserModel.m in Sources */,
 				04B4CBAF1C0D2A5D008E9701 /* YBHomePopPresentationController.m in Sources */,
 				0437FEDB1C18150B00891686 /* YBSendViewController.m in Sources */,
+				04B3B2091C1D5381001A337B /* YBSendImageViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

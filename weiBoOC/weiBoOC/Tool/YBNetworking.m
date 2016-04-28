@@ -20,6 +20,36 @@
 
 YBSingleton_m(userModel)
 
+#pragma mark - 发微博
+/// 发微博
++ (void)sendWeiBoWithText:(NSString *)text image:(UIImage *)image andFinish:(sendFinish)finish {
+    // 链接
+    NSString *path = @"/2/statuses/update.json";
+    // 参数
+    YBNetworking *networking = [YBNetworking shareduserModel];
+    NSDictionary *dic = @{@"access_token": [YBUserModel userModel].access_token,
+                          @"status": text};
+    if (image != nil) { // 图片微博
+        path = @"https://upload.api.weibo.com/2/statuses/upload.json";
+        [networking POST:path image:image parameters:dic andFinish:^(id success, NSError *error) {
+            if (error != nil) { // 失败
+                finish(NO);
+            }else{ // 成功
+                finish(YES);
+            }
+        }];
+    }else{ // 文字微博
+        // 加载数据
+        [networking POST:path parameters:dic andFinish:^(id success, NSError *error) {
+            if (error != nil) { // 失败
+                finish(NO);
+            }else{ // 成功
+                finish(YES);
+            }
+        }];
+    }
+}
+
 #pragma mark - 加载微薄数据
 /// 加载微薄数据
 + (void)loadWeiBoDataWithNewId:(NSInteger)since_id andOld:(NSInteger)max_id andFinish:(networkFinish)finish {
@@ -75,6 +105,19 @@ YBSingleton_m(userModel)
 
 
 #pragma mark - 封装网络框架
+/// 有图片
+- (void)POST:(NSString *)URLString image:(UIImage *)image parameters:(nullable id)parameters andFinish:(networkFinish)finish {
+    NSData *data = UIImagePNGRepresentation(image);
+    // 网络加载数据
+    [self.manager POST:URLString parameters:parameters constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+        [formData appendPartWithFileData:data name:@"pic" fileName:@"sb" mimeType:@"image/png"];
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
+        finish(responseObject, nil);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        finish(nil, error);
+    }];
+}
+
 - (void)POST:(NSString *)URLString parameters:(nullable id)parameters andFinish:(networkFinish)finish {
     // 网络加载数据
     [self.manager POST:URLString parameters:parameters success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {

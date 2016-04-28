@@ -7,8 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+@class YBSendImageView;
 
 @interface YBSendTextView : UITextView
+
+/// 图片试图
+@property(nonatomic, weak) YBSendImageView *imageCollectionView;
 
 // 文本发生改变调用
 - (void)textViewDidChange:(UITextView *)textView;

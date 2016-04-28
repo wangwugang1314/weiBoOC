@@ -81,7 +81,7 @@
     // 当前类型
     YBSendToolBarButClickStyle style = YBSendToolBarButClickStyleNone;
     if (but == self.pictureView) { // 图片
-        
+        style = YBSendToolBarButClickStylePictuer;
     }else if (but == self.mentionView) { // @
     
     }else if (but == self.trendView) { // #
@@ -106,6 +106,7 @@
     if (!_pictureView) {
         UIButton *but = [UIButton new];
         [but setImage:[UIImage imageNamed:@"compose_toolbar_picture"] forState:UIControlStateNormal];
+        [but addTarget:self action:@selector(butClick:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:but];
         _pictureView = but;
     }
